@@ -33,10 +33,10 @@ class ControladorZona{
 
 public function controlZona($seleccion){
     
-    $ID_Zona=$_POST['ID_Zona'];
-    $NombreZona=$_POST['NombreZona'];
-    $Ubicacion=$_POST['Ubicacion'];
-    $ServiciosDisponibles=$_POST['ServiciosDisponibles'];
+    $idZona=$_POST['idZona'];
+    $nombreZona=$_POST['nombreZona'];
+    $ubicacionZona=$_POST['ubicacionZona'];
+    $serviciosDisponiblesZona=$_POST['serviciosDisponiblesZona'];
    
 
     $Zona=new Zona();
@@ -45,23 +45,24 @@ public function controlZona($seleccion){
 
         case 1:
         
-        $Zona->anexarZona($ID_Zona,$NombreZona,$Ubicacion,$ServiciosDisponibles);      
+        $Zona->anexarZona($idZona,$nombreZona,$ubicacionZona,$serviciosDisponiblesZona);      
         break;
         
         case 2:        
-        $Zona->actualizarZona($ID_Zona,$NombreZona,$Ubicacion,$ServiciosDisponibles);
+        $Zona->actualizarZona($idZona,$nombreZona,$ubicacionZona,$serviciosDisponiblesZona);
         
         break;
          
         case 3:
         
-        $Zona->borrarZona($ID_Zona);        
+        $Zona->borrarZona($idZona);        
         break;
         
         case 4:
         
-            $Zona->buscarZona($ID_Zona);        
+        $Zona->buscarZona($idZona);        
         break;
+
         case 5:
         
         $Zona->listarZonas();        

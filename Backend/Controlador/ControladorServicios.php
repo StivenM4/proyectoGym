@@ -33,9 +33,9 @@ class ControladorServicios{
 
 public function controlServicio($seleccion){
     
-    $ID_Servicio=$_POST['ID_Servicio'];
-    $NombreServicio=$_POST['NombreServicio'];
-    $Descripcion=$_POST['Descripcion'];
+    $idServicio=$_POST['idServicio'];
+    $nombreServicio=$_POST['nombreServicio'];
+    $descripcionServicio=$_POST['descripcionServicio'];
     
 
     $Servicio=new Servicio();
@@ -44,23 +44,24 @@ public function controlServicio($seleccion){
 
         case 1:
         
-        $Servicio->anexarServicio($ID_Servicio,$NombreServicio,$Descripcion);      
+        $Servicio->anexarServicio($idServicio,$nombreServicio,$descripcionServicio);      
         break;
         
         case 2:        
-        $Servicio->actualizarServicio($ID_Servicio,$NombreServicio,$Descripcion);
+        $Servicio->actualizarServicio($idServicio,$nombreServicio,$descripcionServicio);
         
         break;
          
         case 3:
         
-        $Servicio->borrarServicio($ID_Servicio);        
+        $Servicio->borrarServicio($idServicio);        
         break;
         
         case 4:
         
-            $Servicio->buscarServicio($ID_Servicio);        
+        $Servicio->buscarServicio($idServicio);        
         break;
+
         case 5:
         
         $Servicio->listarServicios();        

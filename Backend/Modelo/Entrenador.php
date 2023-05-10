@@ -15,7 +15,7 @@ function anexarEntrenador($cedulaEntrenador,$nombreEntrenador,$edadEntrenador,$n
 
     $grabar_Entrenador="INSERT INTO entrenador(cedulaEntrenador,nombreEntrenador,edadEntrenador,numTelefonoEntrenador,especializacionEntrenador) VALUES('$cedulaEntrenador','$nombreEntrenador','$edadEntrenador','$numTelefonoEntrenador','$especializacionEntrenador')";
     $guardar_Entrenador=mysqli_query($this->conexion->link,$grabar_Entrenador) 
-    or die('El registro de datos fallo;: ' . mysqli_connect_error());
+    or die('' . mysqli_connect_error());
 
     if($guardar_Entrenador){
         echo'
@@ -40,12 +40,13 @@ function anexarEntrenador($cedulaEntrenador,$nombreEntrenador,$edadEntrenador,$n
 function actualizarEntrenador($cedulaEntrenador,$nombreEntrenador,$edadEntrenador,$numTelefonoEntrenador,$especializacionEntrenador){
     $actualizar_Entrenador="UPDATE entrenador SET nombreEntrenador='$nombreEntrenador',edadEntrenador='$edadEntrenador',numTelefonoEntrenador='$numTelefonoEntrenador',especializacionEntrenador='$especializacionEntrenador' WHERE cedulaEntrenador='$cedulaEntrenador'";
     $guardar_New_Entrenador = mysqli_query($this->conexion->link,$actualizar_Entrenador)
-    or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
+    or die('' . mysqli_connect_error()); 
 
     if($guardar_New_Entrenador){
         echo'
         <script>
         alert("entrenador Actualizado");
+        window.location = "";
         </script>
         ';
         }
@@ -63,12 +64,13 @@ function actualizarEntrenador($cedulaEntrenador,$nombreEntrenador,$edadEntrenado
     function borrarEntrenador($cedulaEntrenador){
         $Borrar_Entrenador="DELETE FROM entrenador WHERE cedulaCliente='$cedulaEntrenador' ";
         $Borrar=mysqli_query($this->conexion->link,$Borrar_Entrenador)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+        or die('' . mysqli_connect_error()); 
 
         if($Borrar){
             echo'
             <script>
             alert("entrenador Borrado");
+            window.location = "";
             </script>
             ';
             }
@@ -83,10 +85,10 @@ function actualizarEntrenador($cedulaEntrenador,$nombreEntrenador,$edadEntrenado
         }
     }
 
-    function listarentrenador(){
+    function listarEntrenador(){
         $consultar_Entrenador="SELECT * FROM entrenador ";
         $consulta = mysqli_query($this->conexion->link,$consultar_Entrenador)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+        or die('' . mysqli_connect_error()); 
     if ($row = mysqli_fetch_array($consulta)) {
         do {
 

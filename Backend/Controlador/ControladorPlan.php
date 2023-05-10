@@ -34,12 +34,12 @@
     
     public function controlPlan($seleccion){
         
-        $ID_Plan=$_POST['ID_Plan'];
-        $NombrePlan=$_POST['NombrePlan'];
-        $Duracion=$_POST['Duracion'];
-        $Precio=$_POST['Precio'];
-        $Beneficios=$_POST['Beneficios'];
-        $Restricciones=$_POST['Restricciones'];
+        $idplan=$_POST['idplan'];
+        $nombrePlan=$_POST['nombrePlan'];
+        $duracionPlan=$_POST['duracionPlan'];
+        $precioPlan=$_POST['precioPlan'];
+        $beneficiosPlan=$_POST['beneficiosPlan'];
+        $restriccionesPlan=$_POST['restriccionesPlan'];
         
     
         $Plan=new Plan();
@@ -48,23 +48,24 @@
     
             case 1:
             
-            $Plan->anexarPlan($ID_Plan,$NombrePlan,$Duracion,$Precio,$Beneficios,$Restricciones);      
+            $Plan->anexarPlan($idplan,$nombrePlan,$duracionPlan,$precioPlan,$beneficiosPlan,$restriccionesPlan);      
             break;
             
             case 2:        
-            $Plan->actualizarPlan($ID_Plan,$NombrePlan,$Duracion,$Precio,$Beneficios,$Restricciones);
+            $Plan->actualizarPlan($idplan,$nombrePlan,$duracionPlan,$precioPlan,$beneficiosPlan,$restriccionesPlan);
             
             break;
              
             case 3:
             
-            $Plan->borrarPlan($ID_Plan);        
+            $Plan->borrarPlan($idplan);        
             break;
             
             case 4:
             
-                $Plan->buscarPlan($ID_Plan);        
+            $Plan->buscarPlan($idplan);        
             break;
+
             case 5:
             
             $Plan->listarPlans();        

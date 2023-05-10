@@ -33,10 +33,10 @@ class ControladorPago{
 
 public function controlPago($seleccion){
     
-    $ID_Pago=$_POST['ID_Pago'];
-    $ValorPago=$_POST['ValorPago'];
-    $FechaPago=$_POST['FechaPago'];
-    $EstadoPago=$_POST['EstadoPago'];
+    $idPago=$_POST['idPago'];
+    $valorPago=$_POST['valorPago'];
+    $fechaPago=$_POST['fechaPago'];
+    $estadoPago=$_POST['estadoPago'];
   
 
     $Pago=new Pago();
@@ -45,23 +45,24 @@ public function controlPago($seleccion){
 
         case 1:
         
-        $Pago->anexarPago($ID_Pago,$ValorPago,$FechaPago,$EstadoPago);      
+        $Pago->anexarPago($idPago,$valorPago,$fechaPago,$estadoPago);      
         break;
         
         case 2:        
-        $Pago->actualizarPago($ID_Pago,$ValorPago,$FechaPago,$EstadoPago);
+        $Pago->actualizarPago($idPago,$valorPago,$fechaPago,$estadoPago);
         
         break;
          
         case 3:
         
-        $Pago->borrarPago($ID_Pago);        
+        $Pago->borrarPago($idPago);        
         break;
         
         case 4:
         
-            $Pago->buscarPago($ID_Pago);        
+        $Pago->buscarPago($idPago);        
         break;
+
         case 5:
         
         $Pago->listarPagos();        

@@ -15,7 +15,7 @@ function anexarClase($idClase,$nombreClase,$descripcionClase,$DuracionClase){
 
     $grabar_Clase="INSERT INTO clase(idClase,nombreClase,descripcionClase,DuracionClase) VALUES('$idClase','$nombreClase','$descripcionClase','$DuracionClase')";
     $guardar_Clase=mysqli_query($this->conexion->link,$grabar_Clase) 
-    or die('El registro de datos fallo;: ' . mysqli_connect_error());
+    or die('' . mysqli_connect_error());
 
     if($guardar_Clase){
         echo'
@@ -40,12 +40,13 @@ function anexarClase($idClase,$nombreClase,$descripcionClase,$DuracionClase){
 function actualizarClase($idClase,$nombreClase,$descripcionClase,$DuracionClase){
     $actualizar_Clase="UPDATE clase SET nombreClase='$nombreClase',descripcionClase='$descripcionClase',DuracionClase='$DuracionClase' WHERE idClase='$idClase'";
     $guardar_New_Clase = mysqli_query($this->conexion->link,$actualizar_Clase)
-    or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
+    or die('' . mysqli_connect_error()); 
 
     if($guardar_New_Clase){
         echo'
         <script>
         alert("Clase Actualizado");
+        window.location = "";
         </script>
         ';
         }
@@ -63,12 +64,13 @@ function actualizarClase($idClase,$nombreClase,$descripcionClase,$DuracionClase)
     function borrarClase($idClase){
         $Borrar_Clase="DELETE FROM clase WHERE cedulaCliente='$idClase' ";
         $Borrar=mysqli_query($this->conexion->link,$Borrar_Clase)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+        or die('' . mysqli_connect_error()); 
 
         if($Borrar){
             echo'
             <script>
             alert("Clase Borrado");
+            window.location = "";
             </script>
             ';
             }
@@ -86,7 +88,7 @@ function actualizarClase($idClase,$nombreClase,$descripcionClase,$DuracionClase)
     function listarClase(){
         $consultar_Clase="SELECT * FROM clase ";
         $consulta = mysqli_query($this->conexion->link,$consultar_Clase)
-        or die('Fallo borrar Clase;: ' . mysqli_connect_error()); 
+        or die('' . mysqli_connect_error()); 
     if ($row = mysqli_fetch_array($consulta)) {
         do {
 

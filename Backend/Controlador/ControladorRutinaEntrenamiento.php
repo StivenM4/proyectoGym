@@ -33,13 +33,13 @@ class ControladorRutinaEntrenamiento{
 
 public function controlRutinaEntrenamiento($seleccion){
     
-    $ID_Rutina=$_POST['ID_Rutina'];
-    $NombreRutina=$_POST['NombreRutina'];
-    $Descripcion=$_POST['Descripcion'];
-    $Ejercicios=$_POST['Ejercicios'];
-    $Repeticiones=$_POST['Repeticiones'];
-    $Series=$_POST['Series'];
-    $Objetivos=$_POST['Objetivos'];
+    $idRutina=$_POST['idRutina'];
+    $nombreRutina=$_POST['nombreRutina'];
+    $descripcionRutina=$_POST['descripcionRutina'];
+    $ejerciciosRutina=$_POST['ejerciciosRutina'];
+    $repeticionesRutina=$_POST['repeticionesRutina'];
+    $seriesRutina=$_POST['seriesRutina'];
+    $objetivosRutina=$_POST['objetivosRutina'];
 
     $RutinaEntrenamiento=new RutinaEntrenamiento();
 
@@ -47,23 +47,24 @@ public function controlRutinaEntrenamiento($seleccion){
 
         case 1:
         
-        $RutinaEntrenamiento->anexarRutinaEntrenamiento($ID_Rutina,$NombreRutina,$Descripcion,$Ejercicios,$Repeticiones,$Series,$Objetivos);      
+        $RutinaEntrenamiento->anexarRutinaEntrenamiento($idRutina,$nombreRutina,$descripcionRutina,$ejerciciosRutina,$repeticionesRutina,$seriesRutina,$objetivosRutina);      
         break;
         
         case 2:        
-        $RutinaEntrenamiento->actualizarRutinaEntrenamiento($ID_Rutina,$NombreRutina,$Descripcion,$Ejercicios,$Repeticiones,$Series,$Objetivos);
+        $RutinaEntrenamiento->actualizarRutinaEntrenamiento($idRutina,$nombreRutina,$descripcionRutina,$ejerciciosRutina,$repeticionesRutina,$seriesRutina,$objetivosRutina);
         
         break;
          
         case 3:
         
-        $RutinaEntrenamiento->borrarRutinaEntrenamiento($ID_Rutina);        
+        $RutinaEntrenamiento->borrarRutinaEntrenamiento($idRutina);        
         break;
         
         case 4:
         
-            $RutinaEntrenamiento->buscarRutinaEntrenamiento($ID_Rutina);        
+        $RutinaEntrenamiento->buscarRutinaEntrenamiento($idRutina);        
         break;
+
         case 5:
         
         $RutinaEntrenamiento->listarRutinaEntrenamientos();        

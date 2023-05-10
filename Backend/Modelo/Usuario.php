@@ -11,11 +11,11 @@ function __construct() {
     $this->conexion = new Conexion();
 }
 
-    function anexarUsuario($nombreUsuario,$usuario,$email,$contrasena){
+    function anexarUsuario($nombreUsuario,$usuario,$emailUsuario,$contrasenaUsuario){
 
-        $grabar_usuario="INSERT INTO usuarios(nombreUsuario,usuario,email,contra) VALUES('$nombreUsuario','$usuario','$email','$contrasena')";
+        $grabar_usuario="INSERT INTO usuario(nombreUsuario,usuario,emailUsuario,contra) VALUES('$nombreUsuario','$usuario','$emailUsuario','$contrasenaUsuario')";
         $guardar_usuario=mysqli_query($this->conexion->link,$grabar_usuario) 
-        or die('El registro de datos fallo;: ' . mysqli_connect_error());
+        or die('' . mysqli_connect_error());
 
         if($guardar_usuario){
             echo'
@@ -37,10 +37,10 @@ function __construct() {
         
     }
 
-    function actualizarUsuario($codigo,$nombreUsuario,$usuario,$email,$contrasena){
-        $actualizar_Usuario="UPDATE usuarios SET nombreUsuario='$nombreUsuario',usuario='$usuario',email='$email',contra='$contrasena' WHERE codUsuario='$codigo'";
+    function actualizarUsuario($codigo,$nombreUsuario,$usuario,$emailUsuario,$contrasenaUsuario){
+        $actualizar_Usuario="UPDATE usuario SET nombreUsuario='$nombreUsuario',usuario='$usuario',emailUsuario='$emailUsuario',contra='$contrasenaUsuario' WHERE codUsuario='$codigo'";
         $guardar_New_Usuario = mysqli_query($this->conexion->link,$actualizar_Usuario)
-        or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
+        or die('' . mysqli_connect_error()); 
 
         if($guardar_New_Usuario){
             echo'
@@ -61,9 +61,9 @@ function __construct() {
     }
 
     function borrarUsuario($codigo){
-        $Borrar_Usuario="DELETE FROM usuarios WHERE codUsuario='$codigo' ";
+        $Borrar_Usuario="DELETE FROM usuario WHERE codUsuario='$codigo' ";
         $Borrar=mysqli_query($this->conexion->link,$Borrar_Usuario)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+        or die('' . mysqli_connect_error()); 
 
         if($Borrar){
         echo'
@@ -83,10 +83,10 @@ function __construct() {
         }        
     }  
 
-    function listarUsuarios(){
-        $consultar_Clientes="SELECT * FROM clientes ";
-        $consulta = mysqli_query($this->conexion->link,$consultar_Clientes)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function listarusuario(){
+        $consultar_Usuario="SELECT * FROM usuario ";
+        $consulta = mysqli_query($this->conexion->link,$consultar_Usuario)
+        or die('' . mysqli_connect_error()); 
 
         if ($row = mysqli_fetch_array($consulta)) {
             do {
@@ -94,7 +94,7 @@ function __construct() {
                 echo '<p class="cliente-info">'.$row["codUsuario"].'</p>
                 <p class="cliente-info">'.$row["nombreUsuario"].'</p>
                 <p class="cliente-info">'.$row["usuario"].'</p>
-                <p class="cliente-info">'.$row["email"].'</p>
+                <p class="cliente-info">'.$row["emailUsuario"].'</p>
                 <p class="cliente-info">'.$row["contra"].'</p>';
                 
                 } while ($row = mysqli_fetch_array($consulta));

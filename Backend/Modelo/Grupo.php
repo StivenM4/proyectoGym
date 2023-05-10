@@ -11,16 +11,16 @@ Class Grupo{
     }
     
 
-function anexarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
+function anexarGrupo($idGrupo,$nombreGrupo,$descripcionGrupo,$tamGrupo){
 
-    $grabar_Obj="INSERT INTO objeto(id,valor1,valor2,valor3,valor4,valor5,valor6) VALUES('$Id','$valor1','$valor2','$valor3','$valor4','$valor5','$valor6')";
-    $guardar_Obj=mysqli_query($this->conexion->link,$grabar_Obj) 
-    or die('El registro de datos fallo;: ' . mysqli_connect_error());
+    $grabar_Grupo="INSERT INTO grupo(idGrupo,nombreGrupo,descripcionGrupo,tamGrupo) VALUES('$idGrupo','$nombreGrupo','$descripcionGrupo','$tamGrupo')";
+    $guardar_Grupo=mysqli_query($this->conexion->link,$grabar_Grupo) 
+    or die('' . mysqli_connect_error());
 
-    if($guardar_Obj){
+    if($guardar_Grupo){
         echo'
         <script>
-        alert("Usuario Registrado");
+        alert("Grupo Registrado");
         window.location = "";
         </script>
         ';
@@ -37,15 +37,16 @@ function anexarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
     
 }
 
-function actualizarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
-    $actualizar_Obj="UPDATE objeto SET valor1='$valor1',valor2='$valor2',valor3='$valor3',valor4='$valor4',valor5='$valor5',valor6='$valor6' WHERE id='$Id'";
-    $guardar_New_Obj = mysqli_query($this->conexion->link,$actualizar_Obj)
-    or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
+function actualizarGrupo($idGrupo,$nombreGrupo,$descripcionGrupo,$tamGrupo){
+    $actualizar_Grupo="UPDATE grupo SET nombreGrupo='$nombreGrupo',descripcionGrupo='$descripcionGrupo',tamGrupo='$tamGrupo' WHERE idGrupo='$idGrupo'";
+    $guardar_New_Grupo = mysqli_query($this->conexion->link,$actualizar_Grupo)
+    or die('' . mysqli_connect_error()); 
 
-    if($guardar_New_Obj){
+    if($guardar_New_Grupo){
         echo'
         <script>
-        alert("cliente Actualizado");
+        alert("Grupo Actualizado");
+        window.location = "";
         </script>
         ';
         }
@@ -53,22 +54,23 @@ function actualizarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
     else{
         echo'
         <script>
-        alert("....El cliente no existe...");
+        alert("....El Grupo no existe...");
         window.location = "";
         </script>
         ';
     }
     }
 
-    function borrarObj($Id){
-        $Borrar_Obj="DELETE FROM objeto WHERE cedulaCliente='$Id' ";
-        $Borrar=mysqli_query($this->conexion->link,$Borrar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function borrarGrupo($idGrupo){
+        $Borrar_Grupo="DELETE FROM grupo WHERE cedulaCliente='$idGrupo' ";
+        $Borrar=mysqli_query($this->conexion->link,$Borrar_Grupo)
+        or die('' . mysqli_connect_error()); 
 
         if($Borrar){
             echo'
             <script>
-            alert("Cliente Borrado");
+            alert("Grupo Borrado");
+            window.location = "";
             </script>
             ';
             }
@@ -76,25 +78,24 @@ function actualizarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
         else{
             echo'
             <script>
-            alert("....El usuario no existe...");
+            alert("....El Grupo no existe...");
             window.location = "";
             </script>
             ';
         }
     }
 
-    function listarobjeto(){
-        $consultar_Obj="SELECT * FROM objeto ";
-        $consulta = mysqli_query($this->conexion->link,$consultar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function listarGrupo(){
+        $consultar_Grupo="SELECT * FROM grupo ";
+        $consulta = mysqli_query($this->conexion->link,$consultar_Grupo)
+        or die('' . mysqli_connect_error()); 
     if ($row = mysqli_fetch_array($consulta)) {
         do {
 
-            echo '<p class="obj-info">'.$row["id"].'</p>
-            <p class="obj-info">'.$row["valor1"].'</p>
-            <p class="obj-info">'.$row["valor2"].'</p>
-            <p class="obj-info">'.$row["valor3"].'</p>
-            <p class="obj-info">'.$row["valor4"].'</p>';
+            echo '<p class="Grupo-info">'.$row["idGrupo"].'</p>
+            <p class="Grupo-info">'.$row["nombreGrupo"].'</p>
+            <p class="Grupo-info">'.$row["descripcionGrupo"].'</p>
+            <p class="Grupo-info">'.$row["tamGrupo"].'</p>';
             
             } while ($row = mysqli_fetch_array($consulta));
             

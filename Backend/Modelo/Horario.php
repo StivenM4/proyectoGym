@@ -2,7 +2,7 @@
 
 include("../Conexion.php"); 
 
-Class nameClase{
+Class Horario{
 
     private $conexion;
 
@@ -11,16 +11,16 @@ Class nameClase{
     }
     
 
-function anexarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
+function anexarHorario($idHorario,$fechaHorario,$horaInicioHorario,$horaFinalizacionHorario){
 
-    $grabar_Obj="INSERT INTO objeto(id,valor1,valor2,valor3,valor4,valor5,valor6) VALUES('$Id','$valor1','$valor2','$valor3','$valor4','$valor5','$valor6')";
-    $guardar_Obj=mysqli_query($this->conexion->link,$grabar_Obj) 
-    or die('El registro de datos fallo;: ' . mysqli_connect_error());
+    $grabar_Horario="INSERT INTO horario(idHorario,fechaHorario,horaInicioHorario,horaFinalizacionHorario) VALUES('$idHorario','$fechaHorario','$horaInicioHorario','$horaFinalizacionHorario')";
+    $guardar_Horario=mysqli_query($this->conexion->link,$grabar_Horario) 
+    or die('' . mysqli_connect_error());
 
-    if($guardar_Obj){
+    if($guardar_Horario){
         echo'
         <script>
-        alert("Usuario Registrado");
+        alert("Horario Registrado");
         window.location = "";
         </script>
         ';
@@ -37,15 +37,16 @@ function anexarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
     
 }
 
-function actualizarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
-    $actualizar_Obj="UPDATE objeto SET valor1='$valor1',valor2='$valor2',valor3='$valor3',valor4='$valor4',valor5='$valor5',valor6='$valor6' WHERE id='$Id'";
-    $guardar_New_Obj = mysqli_query($this->conexion->link,$actualizar_Obj)
-    or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
+function actualizarHorario($idHorario,$fechaHorario,$horaInicioHorario,$horaFinalizacionHorario){
+    $actualizar_Horario="UPDATE horario SET fechaHorario='$fechaHorario',horaInicioHorario='$horaInicioHorario',horaFinalizacionHorario='$horaFinalizacionHorario' WHERE idHorario='$idHorario'";
+    $guardar_New_Horario = mysqli_query($this->conexion->link,$actualizar_Horario)
+    or die('' . mysqli_connect_error()); 
 
-    if($guardar_New_Obj){
+    if($guardar_New_Horario){
         echo'
         <script>
-        alert("cliente Actualizado");
+        alert("Horario Actualizado");
+        window.location = "";
         </script>
         ';
         }
@@ -53,22 +54,23 @@ function actualizarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
     else{
         echo'
         <script>
-        alert("....El cliente no existe...");
+        alert("....El Horario no existe...");
         window.location = "";
         </script>
         ';
     }
     }
 
-    function borrarObj($Id){
-        $Borrar_Obj="DELETE FROM objeto WHERE cedulaCliente='$Id' ";
-        $Borrar=mysqli_query($this->conexion->link,$Borrar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function borrarHorario($idHorario){
+        $Borrar_Horario="DELETE FROM horario WHERE cedulaCliente='$idHorario' ";
+        $Borrar=mysqli_query($this->conexion->link,$Borrar_Horario)
+        or die('' . mysqli_connect_error()); 
 
         if($Borrar){
             echo'
             <script>
-            alert("Cliente Borrado");
+            alert("Horario Borrado");
+            window.location = "";
             </script>
             ';
             }
@@ -76,25 +78,24 @@ function actualizarObj($Id,$valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
         else{
             echo'
             <script>
-            alert("....El usuario no existe...");
+            alert("....El Horario no existe...");
             window.location = "";
             </script>
             ';
         }
     }
 
-    function listarobjeto(){
-        $consultar_Obj="SELECT * FROM objeto ";
-        $consulta = mysqli_query($this->conexion->link,$consultar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function listarhorario(){
+        $consultar_Horario="SELECT * FROM horario ";
+        $consulta = mysqli_query($this->conexion->link,$consultar_Horario)
+        or die('' . mysqli_connect_error()); 
     if ($row = mysqli_fetch_array($consulta)) {
         do {
 
-            echo '<p class="obj-info">'.$row["id"].'</p>
-            <p class="obj-info">'.$row["valor1"].'</p>
-            <p class="obj-info">'.$row["valor2"].'</p>
-            <p class="obj-info">'.$row["valor3"].'</p>
-            <p class="obj-info">'.$row["valor4"].'</p>';
+            echo '<p class="Horario-info">'.$row["idHorario"].'</p>
+            <p class="Horario-info">'.$row["fechaHorario"].'</p>
+            <p class="Horario-info">'.$row["horaInicioHorario"].'</p>
+            <p class="Horario-info">'.$row["horaFinalizacionHorario"].'</p>';
             
             } while ($row = mysqli_fetch_array($consulta));
             

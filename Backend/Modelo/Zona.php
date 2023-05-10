@@ -11,16 +11,16 @@ Class Zona{
     }
     
 
-function anexarObj($ID_Zona,$NombreZona,$Ubicacion,$BeneficiosDisponibles){
+function anexarZona($idZona,$nombreZona,$ubicacionZona,$serviciosDisponiblesZona){
 
-    $grabar_Obj="INSERT INTO objeto(ID_Zona,NombreZona,Ubicacion,BeneficiosDisponibles) VALUES('$ID_Zona','$NombreZona','$Ubicacion','$BeneficiosDisponibles')";
-    $guardar_Obj=mysqli_query($this->conexion->link,$grabar_Obj) 
-    or die('El registro de datos fallo;: ' . mysqli_connect_error());
+    $grabar_Zona="INSERT INTO zona(idZona,nombreZona,ubicacionZona,serviciosDisponiblesZona) VALUES('$idZona','$nombreZona','$ubicacionZona','$serviciosDisponiblesZona')";
+    $guardar_Zona=mysqli_query($this->conexion->link,$grabar_Zona) 
+    or die('' . mysqli_connect_error());
 
-    if($guardar_Obj){
+    if($guardar_Zona){
         echo'
         <script>
-        alert("Usuario Registrado");
+        alert("Zona Registrado");
         window.location = "";
         </script>
         ';
@@ -37,15 +37,16 @@ function anexarObj($ID_Zona,$NombreZona,$Ubicacion,$BeneficiosDisponibles){
     
 }
 
-function actualizarObj($ID_Zona,$NombreZona,$Ubicacion,$BeneficiosDisponibles){
-    $actualizar_Obj="UPDATE objeto SET NombreZona='$NombreZona',Ubicacion='$Ubicacion',BeneficiosDisponibles='$BeneficiosDisponibles' WHERE ID_Zona='$ID_Zona'";
-    $guardar_New_Obj = mysqli_query($this->conexion->link,$actualizar_Obj)
-    or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
+function actualizarZona($idZona,$nombreZona,$ubicacionZona,$serviciosDisponiblesZona){
+    $actualizar_Zona="UPDATE zona SET nombreZona='$nombreZona',ubicacionZona='$ubicacionZona',serviciosDisponiblesZona='$serviciosDisponiblesZona' WHERE idZona='$idZona'";
+    $guardar_New_Zona = mysqli_query($this->conexion->link,$actualizar_Zona)
+    or die('' . mysqli_connect_error()); 
 
-    if($guardar_New_Obj){
+    if($guardar_New_Zona){
         echo'
         <script>
-        alert("cliente Actualizado");
+        alert("Zona Actualizado");
+        window.location = "";
         </script>
         ';
         }
@@ -53,22 +54,22 @@ function actualizarObj($ID_Zona,$NombreZona,$Ubicacion,$BeneficiosDisponibles){
     else{
         echo'
         <script>
-        alert("....El cliente no existe...");
+        alert("....La Zona no existe...");
         window.location = "";
         </script>
         ';
     }
     }
 
-    function borrarObj($ID_Zona){
-        $Borrar_Obj="DELETE FROM objeto WHERE cedulaCliente='$ID_Zona' ";
-        $Borrar=mysqli_query($this->conexion->link,$Borrar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function borrarZona($idZona){
+        $Borrar_Zona="DELETE FROM zona WHERE cedulaCliente='$idZona' ";
+        $Borrar=mysqli_query($this->conexion->link,$Borrar_Zona)
+        or die('' . mysqli_connect_error()); 
 
         if($Borrar){
             echo'
             <script>
-            alert("Cliente Borrado");
+            alert("Zona Borrado");
             </script>
             ';
             }
@@ -76,25 +77,24 @@ function actualizarObj($ID_Zona,$NombreZona,$Ubicacion,$BeneficiosDisponibles){
         else{
             echo'
             <script>
-            alert("....El usuario no existe...");
+            alert("....La Zona no existe...");
             window.location = "";
             </script>
             ';
         }
     }
 
-    function listarobjeto(){
-        $consultar_Obj="SELECT * FROM objeto ";
-        $consulta = mysqli_query($this->conexion->link,$consultar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function listarZona(){
+        $consultar_Zona="SELECT * FROM zona ";
+        $consulta = mysqli_query($this->conexion->link,$consultar_Zona)
+        or die('' . mysqli_connect_error()); 
     if ($row = mysqli_fetch_array($consulta)) {
         do {
 
-            echo '<p class="obj-info">'.$row["ID_Zona"].'</p>
-            <p class="obj-info">'.$row["NombreZona"].'</p>
-            <p class="obj-info">'.$row["Ubicacion"].'</p>
-            <p class="obj-info">'.$row["BeneficiosDisponibles"].'</p>
-            <p class="obj-info">'.$row["valor4"].'</p>';
+            echo '<p class="Zona-info">'.$row["idZona"].'</p>
+            <p class="Zona-info">'.$row["nombreZona"].'</p>
+            <p class="Zona-info">'.$row["ubicacionZona"].'</p>
+            <p class="Zona-info">'.$row["serviciosDisponiblesZona"].'</p>';
             
             } while ($row = mysqli_fetch_array($consulta));
             

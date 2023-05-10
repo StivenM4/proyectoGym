@@ -36,8 +36,8 @@ public function controlUsuario($seleccion){
     $codUsuario=$_POST['codUsuario'];
     $nombreUsuario=$_POST['nombreUsuario'];
     $usuario=$_POST['usuario'];
-    $email=$_POST['email'];
-    $contra=$_POST['contra'];
+    $emailUsuario=$_POST['emailUsuario'];
+    $contraUsuario=$_POST['contraUsuario'];
 
     $Usuario=new Usuario();
 
@@ -45,11 +45,11 @@ public function controlUsuario($seleccion){
 
         case 1:
         
-        $Usuario->anexarUsuario($codUsuario,$nombreUsuario,$usuario,$email,$contra);      
+        $Usuario->anexarUsuario($codUsuario,$nombreUsuario,$usuario,$emailUsuario,$contraUsuario);      
         break;
         
         case 2:        
-        $Usuario->actualizarUsuario($codUsuario,$nombreUsuario,$usuario,$email,$contra);
+        $Usuario->actualizarUsuario($codUsuario,$nombreUsuario,$usuario,$emailUsuario,$contraUsuario);
         
         break;
          

@@ -11,16 +11,16 @@ Class Plan{
     }
     
 
-function anexarObj($ID_Plan,$NombrePlan,$Duracion,$PrecioPlan,$Beneficios,$Restricciones){
+function anexarPlan($idPlan,$nombrePlan,$duracionPlan,$precioPlan,$beneficiosPlan,$restriccionesPlan){
 
-    $grabar_Obj="INSERT INTO objeto(ID_Plan,NombrePlan,Duracion,PrecioPlan,Beneficios,Restricciones,valor6) VALUES('$ID_Plan','$NombrePlan','$Duracion','$PrecioPlan','$Beneficios','$Restricciones')";
-    $guardar_Obj=mysqli_query($this->conexion->link,$grabar_Obj) 
-    or die('El registro de datos fallo;: ' . mysqli_connect_error());
+    $grabar_Plan="INSERT INTO plan(idPlan,nombrePlan,duracionPlan,precioPlan,beneficiosPlan,restriccionesPlan) VALUES('$idPlan','$nombrePlan','$duracionPlan','$precioPlan','$beneficiosPlan','$restriccionesPlan')";
+    $guardar_Plan=mysqli_query($this->conexion->link,$grabar_Plan) 
+    or die('' . mysqli_connect_error());
 
-    if($guardar_Obj){
+    if($guardar_Plan){
         echo'
         <script>
-        alert("Usuario Registrado");
+        alert("Plan Registrado");
         window.location = "";
         </script>
         ';
@@ -37,15 +37,16 @@ function anexarObj($ID_Plan,$NombrePlan,$Duracion,$PrecioPlan,$Beneficios,$Restr
     
 }
 
-function actualizarObj($ID_Plan,$NombrePlan,$Duracion,$PrecioPlan,$Beneficios,$Restricciones){
-    $actualizar_Obj="UPDATE objeto SET NombrePlan='$NombrePlan',Duracion='$Duracion',PrecioPlan='$PrecioPlan',Beneficios='$Beneficios',Restricciones='$Restricciones' WHERE ID_Plan='$ID_Plan'";
-    $guardar_New_Obj = mysqli_query($this->conexion->link,$actualizar_Obj)
-    or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
+function actualizarPlan($idPlan,$nombrePlan,$duracionPlan,$precioPlan,$beneficiosPlan,$restriccionesPlan){
+    $actualizar_Plan="UPDATE plan SET nombrePlan='$nombrePlan',duracionPlan='$duracionPlan',precioPlan='$precioPlan',beneficiosPlan='$beneficiosPlan',restriccionesPlan='$restriccionesPlan' WHERE idPlan='$idPlan'";
+    $guardar_New_Plan = mysqli_query($this->conexion->link,$actualizar_Plan)
+    or die('' . mysqli_connect_error()); 
 
-    if($guardar_New_Obj){
+    if($guardar_New_Plan){
         echo'
         <script>
-        alert("cliente Actualizado");
+        alert("Plan Actualizado");
+        window.location = "";
         </script>
         ';
         }
@@ -53,22 +54,23 @@ function actualizarObj($ID_Plan,$NombrePlan,$Duracion,$PrecioPlan,$Beneficios,$R
     else{
         echo'
         <script>
-        alert("....El cliente no existe...");
+        alert("....El Plan no existe...");
         window.location = "";
         </script>
         ';
     }
     }
 
-    function borrarObj($ID_Plan){
-        $Borrar_Obj="DELETE FROM objeto WHERE cedulaCliente='$ID_Plan' ";
-        $Borrar=mysqli_query($this->conexion->link,$Borrar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function borrarPlan($idPlan){
+        $Borrar_Plan="DELETE FROM plan WHERE cedulaCliente='$idPlan' ";
+        $Borrar=mysqli_query($this->conexion->link,$Borrar_Plan)
+        or die('' . mysqli_connect_error()); 
 
         if($Borrar){
             echo'
             <script>
-            alert("Cliente Borrado");
+            alert("Plan Borrado");
+            window.location = "";
             </script>
             ';
             }
@@ -76,25 +78,25 @@ function actualizarObj($ID_Plan,$NombrePlan,$Duracion,$PrecioPlan,$Beneficios,$R
         else{
             echo'
             <script>
-            alert("....El usuario no existe...");
+            alert("....El Plan no existe...");
             window.location = "";
             </script>
             ';
         }
     }
 
-    function listarobjeto(){
-        $consultar_Obj="SELECT * FROM objeto ";
-        $consulta = mysqli_query($this->conexion->link,$consultar_Obj)
-        or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
+    function listarplan(){
+        $consultar_Plan="SELECT * FROM plan ";
+        $consulta = mysqli_query($this->conexion->link,$consultar_Plan)
+        or die('' . mysqli_connect_error()); 
     if ($row = mysqli_fetch_array($consulta)) {
         do {
 
-            echo '<p class="obj-info">'.$row["ID_Plan"].'</p>
-            <p class="obj-info">'.$row["NombrePlan"].'</p>
-            <p class="obj-info">'.$row["Duracion"].'</p>
-            <p class="obj-info">'.$row["PrecioPlan"].'</p>
-            <p class="obj-info">'.$row["Beneficios"].'</p>';
+            echo '<p class="Plan-info">'.$row["idPlan"].'</p>
+            <p class="Plan-info">'.$row["nombrePlan"].'</p>
+            <p class="Plan-info">'.$row["duracionPlan"].'</p>
+            <p class="Plan-info">'.$row["precioPlan"].'</p>
+            <p class="Plan-info">'.$row["beneficiosPlan"].'</p>';
             
             } while ($row = mysqli_fetch_array($consulta));
             
