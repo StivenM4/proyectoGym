@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif
+}
+
+body {
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(imagenes/FondoGym1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+}
+
+.contenedor {
+    width: 90%;
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    transition: all .5s ease-out;
+
+}
+
+.contenedor_mensaje {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 500px;
+    height: 450px;
+    padding: 1.2em;
+    margin: 2em;
+
+
+}
+
+.mensaje p {
+    color: #EEEEEE;
+    font-size: 1.7em;
+    text-shadow: 0 0 5px #00ADB5,
+        0 0 25px #00ADB5;
+}
+
+.mensaje h2 {
+    color: #EEEEEE;
+    font-size: 3em;
+}
+
+.mensaje {
+    padding: 1em;
+}
+
+.mensaje button {
+    padding: 1.2em;
+    font-weight: 550px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: .9em;
+    margin-top: 2em;
+    transition: all 500ms ease-in;
+
+}
+
+.mensaje button:hover {
+    border: #222831 thin solid;
+    background-color: #ABABAB;
+    color: #222831;
+}
+
+.formulario {
+    width: 500px;
+    height: 400px;
+    padding: 1.2em;
+    margin: 2em;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    background-color: rgba(114, 121, 131, 0.203);
+    text-align: center;
+}
+
+.register {
+    height: 550px;
+}
+
+.formulario h2 {
+    font-size: 2.4em;
+    color: #EEEEEE;
+}
+
+h2 {
+    padding: 20px;
+}
+
+label {
+    font-size: 1.3em;
+    text-shadow: 0 0 5px #00ADB5,
+        0 0 25px #00ADB5;
+    color: #EEEEEE;
+}
+
+i {
+    margin: 10px;
+}
+
+.formulario input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    background-color: transparent;
+    border: none;
+    border-bottom: black thin solid;
+    border-width: 3px;
+    outline: none;
+    padding: .2em 0;
+    font-size: 18px;
+    color: #EEEEEE;
+}
+
+
+.formulario input[type="submit"] {
+    width: 60%;
+    margin: auto;
+    border: #EEEEEE thin solid;
+    padding: .7em;
+    border-radius: 20px;
+    font-weight: 600px;
+    margin-top: 3em;
+    font-size: 17px;
+    transition: all 500ms ease-in;
+    color: #EEEEEE;
+
+}
+
+.formulario input[type="submit"]:hover {
+    border: black thin solid;
+    background-color: #ABABAB;
+    color: black;
+    cursor: pointer;
+}
+
+.mensaje button {
+    width: 60%;
+    margin: auto;
+    border: #EEEEEE thin solid;
+    padding: .7em;
+    border-radius: 20px;
+    font-weight: 600px;
+    margin-top: 3em;
+    font-size: 20px;
+    transition: all 500ms ease-in;
+    background-color: transparent;
+    color: #EEEEEE;
+    cursor: pointer;
+}
+
+
+header {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+
+}
+
+a.btnLogin {
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    border: #EEEEEE thin solid;
+    text-decoration: none;
+}
+
+header a {
+    position: relative;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.6em;
+    color: #EEEEEE;
+    margin-right: 20px;
+    text-shadow: 0 0 5px #000000,
+        0 0 25px #000000;
+    text-decoration-color: rgba(255, 255, 255, 0.5);
+
+}
+header a:hover{
+   text-shadow: 0 0 5px #00ADB5,
+        0 0 25px #00ADB5;
+    color: #EEEEEE;
+    cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    color: #EEEEEE;
+    font-size: 2em;
+    font-family: cursive;
+    text-shadow: 0 0 5px #00ADB5,
+        0 0 25px #00ADB5;
+}
+
+.login {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.login.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.registro.active {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@media(max-width:930px) {
+
+    header {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        height: 30vh;
+    
+    }
+    header .navegacion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40vh 0;
+    }
+
+    header nav {
+        display: flex;   
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header a {
+        padding-top: 15px;
+        padding-right: 50px;
+    }
+    a.btnLogin {
+        padding: 5px 20px 5px 20px;
+        border-radius: 10px;
+        border: #EEEEEE thin solid;
+        text-decoration: none;
+        align-items: center;
+        right: 30px;
+    }
+    
+    .logo {
+        color: #EEEEEE;
+        font-size: 2.2em;
+        padding-left: 40px;
+        font-family: cursive;
+    }
+
+    .contenedor {
+        width: 90%;
+        height: 100vh;
+        display: block;
+        justify-content: space-around;
+        transition: all .5s ease-out;
+
+    }
+
+    body {
+        width: 100%;
+        height: 160vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(imagenes/FondoMobile.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow-y: visible;
+        overflow-x: visible;
+    }
+    
+}
