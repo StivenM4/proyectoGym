@@ -1,37 +1,37 @@
 <?php
-include("../Modelo/RutinaEntrenamiento.php");
+include("../Modelo/Rutina.php");
 
-class ControladorRutinaEntrenamiento{
-    private $RutinaEntrenamiento;
+class ControladorRutina{
+    private $Rutina;
     function __construct (){
-        $RutinaEntrenamiento=new RutinaEntrenamiento();
+        $Rutina=new Rutina();
     }
 
     function seleccionarOpcion(){
         
     if(isset($_POST['anexar'])){
 
-    $this->controlRutinaEntrenamiento(1);
+    $this->controlRutina(1);
     }
 
     if(isset($_POST['actualizar'])){
 
-    $this->controlRutinaEntrenamiento(2);
+    $this->controlRutina(2);
     }
 
     if(isset($_POST['borrar'])){
 
-    $this->controlRutinaEntrenamiento(3);
+    $this->controlRutina(3);
     }
 
     if(isset($_POST['listar'])){
 
-    $this->controlRutinaEntrenamiento(4);
+    $this->controlRutina(4);
     }
 
 }
 
-public function controlRutinaEntrenamiento($seleccion){
+public function controlRutina($seleccion){
     
     $idRutina=$_POST['idRutina'];
     $nombreRutina=$_POST['nombreRutina'];
@@ -41,33 +41,33 @@ public function controlRutinaEntrenamiento($seleccion){
     $seriesRutina=$_POST['seriesRutina'];
     $objetivosRutina=$_POST['objetivosRutina'];
 
-    $RutinaEntrenamiento=new RutinaEntrenamiento();
+    $Rutina=new Rutina();
 
     switch($seleccion){
 
         case 1:
         
-        $RutinaEntrenamiento->anexarRutinaEntrenamiento($idRutina,$nombreRutina,$descripcionRutina,$ejerciciosRutina,$repeticionesRutina,$seriesRutina,$objetivosRutina);      
+        $Rutina->anexarRutina($idRutina,$nombreRutina,$descripcionRutina,$ejerciciosRutina,$repeticionesRutina,$seriesRutina,$objetivosRutina);      
         break;
         
         case 2:        
-        $RutinaEntrenamiento->actualizarRutinaEntrenamiento($idRutina,$nombreRutina,$descripcionRutina,$ejerciciosRutina,$repeticionesRutina,$seriesRutina,$objetivosRutina);
+        $Rutina->actualizarRutina($idRutina,$nombreRutina,$descripcionRutina,$ejerciciosRutina,$repeticionesRutina,$seriesRutina,$objetivosRutina);
         
         break;
          
         case 3:
         
-        $RutinaEntrenamiento->borrarRutinaEntrenamiento($idRutina);        
+        $Rutina->borrarRutina($idRutina);        
         break;
         
         case 4:
         
-        $RutinaEntrenamiento->buscarRutinaEntrenamiento($idRutina);        
+        $Rutina->buscarRutina($idRutina);        
         break;
 
         case 5:
         
-        $RutinaEntrenamiento->listarRutinaEntrenamientos();        
+        $Rutina->listarRutinas();        
         break;
         
         }     
@@ -75,7 +75,7 @@ public function controlRutinaEntrenamiento($seleccion){
 
 }
 
-$controlRutinaEntrenamiento = new ControladorRutinaEntrenamiento();
+$controlRutina = new ControladorRutina();
 
-$controlRutinaEntrenamiento -> seleccionarOpcion();
+$controlRutina -> seleccionarOpcion();
 ?>
