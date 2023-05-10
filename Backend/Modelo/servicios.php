@@ -2,7 +2,7 @@
 
 include("../Conexion.php"); 
 
-Class Pago{
+Class Servicios{
 
     private $conexion;
 
@@ -11,9 +11,9 @@ Class Pago{
     }
     
 
-function anexarObj($ID_Pago,$ValorPago,$FechaPago,$EstadoPago){
+function anexarObj($ID_Servicio,$NombreServicio,$Descripcion){
 
-    $grabar_Obj="INSERT INTO objeto(ID_Pago,ValorPago,FechaPago,EstadoPago) VALUES('$ID_Pago','$ValorPago','$FechaPago','$EstadoPago')";
+    $grabar_Obj="INSERT INTO objeto(ID_Servicio,NombreServicio,Descripcion) VALUES('$ID_Servicio','$NombreServicio','$Descripcion')";
     $guardar_Obj=mysqli_query($this->conexion->link,$grabar_Obj) 
     or die('El registro de datos fallo;: ' . mysqli_connect_error());
 
@@ -37,8 +37,8 @@ function anexarObj($ID_Pago,$ValorPago,$FechaPago,$EstadoPago){
     
 }
 
-function actualizarObj($ID_Pago,$ValorPago,$FechaPago,$EstadoPago){
-    $actualizar_Obj="UPDATE objeto SET ValorPago='$ValorPago',FechaPago='$FechaPago',EstadoPago='$EstadoPago' WHERE ID_Pago='$ID_Pago'";
+function actualizarObj($ID_Servicio,$NombreServicio,$Descripcion){
+    $actualizar_Obj="UPDATE objeto SET NombreServicio='$NombreServicio',Descripcion='$Descripcion' WHERE ID_Servicio='$ID_Servicio'";
     $guardar_New_Obj = mysqli_query($this->conexion->link,$actualizar_Obj)
     or die('Fallo actualizar datos;: ' . mysqli_connect_error()); 
 
@@ -60,8 +60,8 @@ function actualizarObj($ID_Pago,$ValorPago,$FechaPago,$EstadoPago){
     }
     }
 
-    function borrarObj($ID_Pago){
-        $Borrar_Obj="DELETE FROM objeto WHERE cedulaCliente='$ID_Pago' ";
+    function borrarObj($ID_Servicio){
+        $Borrar_Obj="DELETE FROM objeto WHERE cedulaCliente='$ID_Servicio' ";
         $Borrar=mysqli_query($this->conexion->link,$Borrar_Obj)
         or die('Fallo borrar usuario;: ' . mysqli_connect_error()); 
 
@@ -90,10 +90,9 @@ function actualizarObj($ID_Pago,$ValorPago,$FechaPago,$EstadoPago){
     if ($row = mysqli_fetch_array($consulta)) {
         do {
 
-            echo '<p class="obj-info">'.$row["ID_Pago"].'</p>
-            <p class="obj-info">'.$row["ValorPago"].'</p>
-            <p class="obj-info">'.$row["FechaPago"].'</p>
-            <p class="obj-info">'.$row["EstadoPago"].'</p>
+            echo '<p class="obj-info">'.$row["ID_Servicio"].'</p>
+            <p class="obj-info">'.$row["NombreServicio"].'</p>
+            <p class="obj-info">'.$row["Descripcion"].'</p>
             ';
             
             } while ($row = mysqli_fetch_array($consulta));
