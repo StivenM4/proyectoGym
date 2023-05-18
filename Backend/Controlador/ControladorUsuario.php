@@ -37,7 +37,7 @@ public function controlUsuario($seleccion){
     $nombreUsuario=$_POST['nombreUsuario'];
     $usuario=$_POST['usuario'];
     $emailUsuario=$_POST['emailUsuario'];
-    $contraUsuario=$_POST['contraUsuario'];
+    $contraUsuario=md5($_POST['contraUsuario']);
 
     $Usuario=new Usuario();
 
@@ -57,15 +57,10 @@ public function controlUsuario($seleccion){
         
         $Usuario->borrarUsuario($codUsuario);        
         break;
-        
+
         case 4:
         
-        $Usuario->buscarUsuario($codUsuario);        
-        break;
-        
-        case 5:
-        
-        $Usuario->listarUsuarios();        
+        $Usuario->listarUsuario();        
         break;
         
         }     

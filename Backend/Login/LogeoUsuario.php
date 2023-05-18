@@ -15,7 +15,7 @@ function Logear(){
     $email=$_POST['correoL'];
     $contra =md5($_POST['contraL']);
 
-    $Buscar_Usuario ="SELECT * FROM usuarios WHERE email='$email' AND contra='$contra'";
+    $Buscar_Usuario ="SELECT * FROM usuarios WHERE emailUsuario='$email' AND contra='$contra'";
     $Verificar_Usuario = mysqli_query($this->conexion->link,$Buscar_Usuario);
     
     $Buscar_Administrador ="SELECT * FROM administradores WHERE email='$email' AND contra='$contra'";

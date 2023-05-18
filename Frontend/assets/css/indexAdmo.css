@@ -5,25 +5,24 @@
     font-family: 'Roboto', sans-serif
 }
 .contenedorInicial{
-display: flex;
-}
-.cajaBotones{
-    padding: 30px;
-    display:block;
+    display: flex;
 }
 .contenedor{
-    position: relative;
+    padding: 10px;
+    background-color: red;
 }
-.AdmoUsuarios{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+.caja{
     background-color: aqua;
 }
-.AdmoClientes{
-    position: relative;
-    z-index: 0;
-    background-color: red;
-
+.cajaBotones button{
+    width: 60%;
+    margin: auto;
+    border: #000000 thin solid;
+    padding: .7em;
+    border-radius: 20px;
+    font-weight: 600px;
+    margin-top: 3em;
+    font-size: 17px;
+    transition: all 500ms ease-in;
+    color: #EEEEEE;
 }

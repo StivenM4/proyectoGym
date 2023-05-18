@@ -13,17 +13,28 @@ function __construct() {
 
     function anexarUsuario($nombreUsuario,$usuario,$emailUsuario,$contrasenaUsuario){
 
-        $grabar_usuario="INSERT INTO usuario(nombreUsuario,usuario,emailUsuario,contra) VALUES('$nombreUsuario','$usuario','$emailUsuario','$contrasenaUsuario')";
+        $grabar_usuario="INSERT INTO usuarios(nombreUsuario,usuario,emailUsuario,contra) VALUES('$nombreUsuario','$usuario','$emailUsuario','$contrasenaUsuario')";
         $guardar_usuario=mysqli_query($this->conexion->link,$grabar_usuario) 
         or die('' . mysqli_connect_error());
 
         if($guardar_usuario){
-            echo'
+            if(isset($_SESSION['Usuario'])){
+                echo'
             <script>
             alert("Usuario Registrado");
             window.location = "../../login.php";
             </script>
             ';
+            }
+            else{
+                echo'
+                <script>
+                alert("Usuario Registrado");
+                window.location = "";
+                </script>
+                ';
+            }
+            
         }
         else{
             echo'
@@ -38,7 +49,7 @@ function __construct() {
     }
 
     function actualizarUsuario($codigo,$nombreUsuario,$usuario,$emailUsuario,$contrasenaUsuario){
-        $actualizar_Usuario="UPDATE usuario SET nombreUsuario='$nombreUsuario',usuario='$usuario',emailUsuario='$emailUsuario',contra='$contrasenaUsuario' WHERE codUsuario='$codigo'";
+        $actualizar_Usuario="UPDATE usuarios SET nombreUsuario='$nombreUsuario',usuario='$usuario',emailUsuario='$emailUsuario',contra='$contrasenaUsuario' WHERE codUsuario='$codigo'";
         $guardar_New_Usuario = mysqli_query($this->conexion->link,$actualizar_Usuario)
         or die('' . mysqli_connect_error()); 
 
@@ -61,7 +72,7 @@ function __construct() {
     }
 
     function borrarUsuario($codigo){
-        $Borrar_Usuario="DELETE FROM usuario WHERE codUsuario='$codigo' ";
+        $Borrar_Usuario="DELETE FROM usuarios WHERE codUsuario='$codigo' ";
         $Borrar=mysqli_query($this->conexion->link,$Borrar_Usuario)
         or die('' . mysqli_connect_error()); 
 
@@ -83,8 +94,8 @@ function __construct() {
         }        
     }  
 
-    function listarusuario(){
-        $consultar_Usuario="SELECT * FROM usuario ";
+    function listarUsuario(){
+        $consultar_Usuario="SELECT * FROM usuarios ";
         $consulta = mysqli_query($this->conexion->link,$consultar_Usuario)
         or die('' . mysqli_connect_error()); 
 
