@@ -1,19 +1,3 @@
-<?php
-
-    session_start();
-    if(!isset($_SESSION['Administrador'])){
-        echo'
-        <script>
-            alert("Inicie sesion para continuar");
-        </script>
-        ';
-        header("location: login.html");
-        session_destroy();
-        die();
-        
-    }
-
-?>
 
 <!DOCTYPE html>
 <html>
@@ -31,10 +15,13 @@
                     <a href="#"></a>
                     <a href="#"></a>
                     <a href="#"></a>
-                    <a href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a>
+                    
                 </nav>      
         </header>
         <div class="contenedorInicial">
+            <div class="contenedor">
+                <h2>Administrador</h2>
+            
             <div class="cajaBotones">
                 <div class="caja"><button>Usuarios</button></div>
                 <div class="caja"><button>Planes</button></div>
@@ -47,15 +34,20 @@
                 <div class="caja"><button>Zona</button></div>
                 <div class="caja"><button>Servicios</button></div>
                 <div class="caja"><button>Pago</button></div>
+                <a href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a>
                            
             </div>
-                <div class="formulariosAmdo">
+        </div>
+                <div class="Amdo">
+                    <div class="InicioAdmo">
+                        <h2>hola</h2>
+                    </div>
                 <div class="contenedor formUsuario ">
                 <form action="Backend/Controlador/ControladorUsuario.php" method="post">
                     <h2>Usuario Prueba</h2>
                     <div class="caja">
                         <label>codigo</label>
-                        <input type="text" name="codUsuario">
+                        <input type="text" name="codUsuario" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -85,7 +77,7 @@
                     <h2>Planes Prueba</h2>
                     <div class="caja">
                         <label>idPlan</label>
-                        <input type="text" name="idPlan">
+                        <input type="text" name="idPlan" required>
                     </div>
                     <div class="caja">
                         <label>Nombre</label>
@@ -119,7 +111,7 @@
                     <h2>Entrenadores Prueba</h2>
                     <div class="caja">
                         <label>CC Entrenador</label>
-                        <input type="text" name="cedulaEntrenador">
+                        <input type="text" name="cedulaEntrenador" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -149,7 +141,7 @@
                     <h2>Clase Prueba</h2>
                     <div class="caja">
                         <label>id clase</label>
-                        <input type="text" name="idClase">
+                        <input type="text" name="idClase" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -176,7 +168,7 @@
                     <h2>Grupo Prueba</h2>
                     <div class="caja">
                         <label>id grupo</label>
-                        <input type="text" name="idGrupo">
+                        <input type="text" name="idGrupo" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -203,7 +195,7 @@
                     <h2>Horario Prueba</h2>
                     <div class="caja">
                         <label>id horario</label>
-                        <input type="text" name="idHorario">
+                        <input type="text" name="idHorario" required>
                     </div>
                     <div class="caja">
                         <label>fecha</label>
@@ -230,7 +222,7 @@
                     <h2>Maquina Prueba</h2>
                     <div class="caja">
                         <label>id maquina</label>
-                        <input type="text" name="idMaquina">
+                        <input type="text" name="idMaquina" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -257,7 +249,7 @@
                     <h2>Rutina Prueba</h2>
                     <div class="caja">
                         <label>id rutina</label>
-                        <input type="text" name="idRutina">
+                        <input type="text" name="idRutina" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -295,7 +287,7 @@
                     <h2>Zona Prueba</h2>
                     <div class="caja">
                         <label>id zona</label>
-                        <input type="text" name="idZona">
+                        <input type="text" name="idZona" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -321,7 +313,7 @@
                     <h2>Servicios Prueba</h2>
                     <div class="caja">
                         <label>id Servicio</label>
-                        <input type="text" name="idServicio">
+                        <input type="text" name="idServicio" required>
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -343,7 +335,7 @@
                     <h2>Pago Prueba</h2>
                     <div class="caja">
                         <label>id Pago</label>
-                        <input type="text" name="idPago">
+                        <input type="text" name="idPago" required>
                     </div>
                     <div class="caja">
                         <label>valor</label>

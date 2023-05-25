@@ -4,25 +4,24 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif
 }
+body{
+    align-items: center;
+    margin: 0;
+
+    
+}
 .contenedorInicial{
     display: flex;
 }
 .contenedor{
     padding: 10px;
-    background-color: red;
 }
-.caja{
-    background-color: aqua;
-}
+
 .cajaBotones button{
-    width: 60%;
+    width: 100%;
     margin: auto;
     border: #000000 thin solid;
     padding: .7em;
-    border-radius: 20px;
-    font-weight: 600px;
-    margin-top: 3em;
-    font-size: 17px;
-    transition: all 500ms ease-in;
-    color: #EEEEEE;
+    border-radius: 10px;
+    color: #000000;
 }
