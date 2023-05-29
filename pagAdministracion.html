@@ -1,53 +1,55 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="Frontend/assets/css/indexAdmo.css">
-    </head>
 
-    <body>
-        <header>
-            <div class="navegacion"></div>
-                <h2></h2>
-                <nav>
-                    <a href="#"></a>
-                    <a href="#"></a>
-                    <a href="#"></a>
-                    
-                </nav>      
-        </header>
-        <div class="contenedorInicial">
-            <div class="contenedor">
-                <h2>Administrador</h2>
-            
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="Frontend/assets/css/indexAdmo.css">
+</head>
+
+<body>
+    <script src="Frontend/assets/js/visibilidadAdmo.js"></script>
+    <header>
+        <div class="navegacion"></div>
+        <h2 class="logo">ProFit Gym Admo 2.0</h2>
+        <nav>
+            <a href="index.html">Inicio</a>
+        </nav>
+    </header>
+    <div class="contenedorInicial">
+        <div>
             <div class="cajaBotones">
-                <div class="caja"><button>Usuarios</button></div>
-                <div class="caja"><button>Planes</button></div>
-                <div class="caja"><button>Entrenadores</button></div>
-                <div class="caja"><button>Clase</button></div>
-                <div class="caja"><button>Grupo</button></div>
-                <div class="caja"><button>Horario</button></div>
-                <div class="caja"><button>Maquina</button></div>
-                <div class="caja"><button>Rutina</button></div>
-                <div class="caja"><button>Zona</button></div>
-                <div class="caja"><button>Servicios</button></div>
-                <div class="caja"><button>Pago</button></div>
-                <a href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a>
-                           
+
+                <div class="caja"><button onclick="divVisibility('formUsuario')">Usuarios</button></div>
+                <div class="caja"><button onclick="divVisibility('formPlanes')">Planes</button></div>
+                <div class="caja"><button onclick="divVisibility('formEntrenadores')">Entrenadores</button></div>
+                <div class="caja"><button onclick="divVisibility('formClase')">Clase</button></div>
+                <div class="caja"><button onclick="divVisibility('formGrupo')">Grupo</button></div>
+                <div class="caja"><button onclick="divVisibility('formHorario')">Horario</button></div>
+                <div class="caja"><button onclick="divVisibility('formMaquina')">Maquina</button></div>
+                <div class="caja"><button onclick="divVisibility('formRutina')">Rutina</button></div>
+                <div class="caja"><button onclick="divVisibility('formZona')">Zona</button></div>
+                <div class="caja"><button onclick="divVisibility('formServicios')">Servicios</button></div>
+                <div class="caja"><button onclick="divVisibility('formPago')">Pago</button></div>
+                <div class="caja"><a class="btnSalir" href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a></div>
             </div>
         </div>
-                <div class="Amdo">
-                    <div class="InicioAdmo">
-                        <h2>hola</h2>
-                    </div>
-                <div class="contenedor formUsuario ">
+        <div class="Amdo">
+            <div id="mensaje" class="mensaje">
+                <div>
+                    <h1>Bienvenido a la pagina <br> del administrador</h1>
+                    <p>Selecciona un boton para ver su crud en un formulario</p>
+                </div>
+
+            </div>
+
+
+            <div id="formUsuario" class="contenedor">
                 <form action="Backend/Controlador/ControladorUsuario.php" method="post">
                     <h2>Usuario Prueba</h2>
                     <div class="caja">
                         <label>codigo</label>
-                        <input type="text" name="codUsuario" required>
+                        <input type="text" name="codUsuario">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -65,19 +67,22 @@
                         <label>contrasena</label>
                         <input type="text" name="contraUsuario">
                     </div>
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
+
                 </form>
             </div>
 
-            <div class="contenedor formPlanes ">
+            <div id="formPlanes" class="contenedor">
                 <form action="Backend/Controlador/ControladorPlanes.php" method="post">
                     <h2>Planes Prueba</h2>
                     <div class="caja">
                         <label>idPlan</label>
-                        <input type="text" name="idPlan" required>
+                        <input type="text" name="idPlan">
                     </div>
                     <div class="caja">
                         <label>Nombre</label>
@@ -99,19 +104,21 @@
                         <label>Restricciones</label>
                         <input type="text" name="restriccionesPlan">
                     </div>
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="contenedor formEntrenadores ">
+            <div id="formEntrenadores" class="contenedor">
                 <form action="Backend/Controlador/ControladorEntrenadores.php" method="post">
                     <h2>Entrenadores Prueba</h2>
                     <div class="caja">
                         <label>CC Entrenador</label>
-                        <input type="text" name="cedulaEntrenador" required>
+                        <input type="text" name="cedulaEntrenador">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -129,19 +136,21 @@
                         <label>especializacion</label>
                         <input type="text" name="especializacionEntrenador">
                     </div>
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="contenedor formClase ">
+            <div id="formClase" class="contenedor ">
                 <form action="Backend/Controlador/ControladorClase.php" method="post">
                     <h2>Clase Prueba</h2>
                     <div class="caja">
                         <label>id clase</label>
-                        <input type="text" name="idClase" required>
+                        <input type="text" name="idClase">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -155,20 +164,21 @@
                         <label>duracion</label>
                         <input type="text" name="DuracionClase">
                     </div>
-
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="contenedor formGrupo ">
+            <div id="formGrupo" class="contenedor">
                 <form action="Backend/Controlador/ControladorGrupo.php" method="post">
                     <h2>Grupo Prueba</h2>
                     <div class="caja">
                         <label>id grupo</label>
-                        <input type="text" name="idGrupo" required>
+                        <input type="text" name="idGrupo">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -182,20 +192,21 @@
                         <label>tamaño</label>
                         <input type="text" name="tamGrupo">
                     </div>
-
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="contenedor formHorario ">
+            <div id="formHorario" class="contenedor">
                 <form action="Backend/Controlador/ControladorHorario.php" method="post">
                     <h2>Horario Prueba</h2>
                     <div class="caja">
                         <label>id horario</label>
-                        <input type="text" name="idHorario" required>
+                        <input type="text" name="idHorario">
                     </div>
                     <div class="caja">
                         <label>fecha</label>
@@ -209,20 +220,21 @@
                         <label>hora finalizacion</label>
                         <input type="text" name="horafinalizacionHorario">
                     </div>
-
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="contenedor formMaquina ">
+            <div id="formMaquina" class="contenedor">
                 <form action="Backend/Controlador/ControladorMaquina.php" method="post">
                     <h2>Maquina Prueba</h2>
                     <div class="caja">
                         <label>id maquina</label>
-                        <input type="text" name="idMaquina" required>
+                        <input type="text" name="idMaquina">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -236,20 +248,21 @@
                         <label>estado</label>
                         <input type="text" name="estadoMaquina">
                     </div>
-
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="contenedor formRutina ">
+            <div id="formRutina" class="contenedor">
                 <form action="Backend/Controlador/ControladorRutina.php" method="post">
                     <h2>Rutina Prueba</h2>
                     <div class="caja">
                         <label>id rutina</label>
-                        <input type="text" name="idRutina" required>
+                        <input type="text" name="idRutina">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -275,19 +288,21 @@
                         <label>objetivos</label>
                         <input type="text" name="objetivosRutina">
                     </div>
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="contenedor formZona ">
+            <div id="formZona" class="contenedor">
                 <form action="Backend/Controlador/ControladorZona.php" method="post">
                     <h2>Zona Prueba</h2>
                     <div class="caja">
                         <label>id zona</label>
-                        <input type="text" name="idZona" required>
+                        <input type="text" name="idZona">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -301,19 +316,20 @@
                         <label>servicios disponibles</label>
                         <input type="text" name="serviciosDisponiblesZona">
                     </div>
-
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
-            <div class="contenedor formServicios ">
+            <div id="formServicios" class="contenedor">
                 <form action="Backend/Controlador/ControladorServicios.php" method="post">
                     <h2>Servicios Prueba</h2>
                     <div class="caja">
                         <label>id Servicio</label>
-                        <input type="text" name="idServicio" required>
+                        <input type="text" name="idServicio">
                     </div>
                     <div class="caja">
                         <label>nombre</label>
@@ -323,19 +339,20 @@
                         <label>descripcion</label>
                         <input type="text" name="descripcionServicio">
                     </div>
-
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
-            <div class="contenedor formPago ">
+            <div id="formPago" class="contenedor">
                 <form action="Backend/Controlador/ControladorPago.php" method="post">
                     <h2>Pago Prueba</h2>
                     <div class="caja">
                         <label>id Pago</label>
-                        <input type="text" name="idPago" required>
+                        <input type="text" name="idPago">
                     </div>
                     <div class="caja">
                         <label>valor</label>
@@ -349,15 +366,17 @@
                         <label>estado</label>
                         <input type="text" name="estadoPago">
                     </div>
-
-                    <button class="submit" type="submit" name="anexar">Agregar</button>
-                    <button class="submit" type="submit" name="actualizar">Actualizar</button>
-                    <button class="submit" type="submit" name="borrar">Borrar</button>
-                    <button class="submit" type="submit" name="listar">Listar</button>
+                    <div class="botones">
+                        <button class="submit" type="submit" name="anexar">Agregar</button>
+                        <button class="submit" type="submit" name="actualizar">Actualizar</button>
+                        <button class="submit" type="submit" name="borrar">Borrar</button>
+                        <button class="submit" type="submit" name="listar">Listar</button>
+                    </div>
                 </form>
             </div>
         </div>
-        </div>
+    </div>
 
-    </body>
+</body>
+
 </html>
