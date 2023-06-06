@@ -1,12 +1,15 @@
 <?php
-include("../Modelo/Usuario.php");
+
+include("../Conexion.php");
 
 class RegistroUsuario{
-private $UsuarioR;
-function __construct() {  
 
-$UsuarioR=new Usuario();
+private $conexion;
+
+function __construct() {  
+    $this->conexion = new Conexion();
 }
+
 
 function agregarUsuario(){
     $nombre = $_POST['nombreR'];
@@ -14,11 +17,34 @@ function agregarUsuario(){
     $email = $_POST['emailR'];
     $contrasena =md5($_POST['contrasR']);
    
-    $UsuarioR=new Usuario();
-    $UsuarioR->anexarUsuario($nombre,$usuario,$email,$contrasena);
+
+        $grabar_usuario="INSERT INTO usuario VALUES('$nombre','$usuario','$email','$contrasena')";
+        $guardar_usuario=mysqli_query($this->conexion->link,$grabar_usuario);
+
+        if($guardar_usuario){
+
+            echo'
+            <script>
+            alert("Usuario Registrado");
+            window.location = "../../login.php";
+            </script>
+            ';
+
+            
+        }
+        else{
+            echo'
+            <script>
+            alert("....Error...");
+            window.location = "../../login.php";
+            </script>
+            ';
+        }
+        mysqli_close($this->conexion->link);
+        
+    }
 }
    
-}
 $Registro = new RegistroUsuario();
 
 $Registro -> agregarUsuario();
