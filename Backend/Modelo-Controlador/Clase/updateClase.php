@@ -20,7 +20,7 @@ $row = mysqli_fetch_array($guardar_clase);
     <title>Editar clase</title>
 </head>
 <body>
-    <div class="users-form">
+    <div class="formClase form">
         <form action="editarClase.php" method="POST">
             <input type="hidden" name="idClase" value="<?= $row['idClase']?>">
             <input type="text" name="NombreClase" placeholder="Nombre de la clase" value="<?= $row['NombreClase']?>">

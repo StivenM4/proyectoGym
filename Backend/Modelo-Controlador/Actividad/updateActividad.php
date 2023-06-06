@@ -19,7 +19,7 @@
     <title>Editar actividades</title>
 </head>
 <body>
-    <div class="users-form">
+    <div class="formActividad form">
         <form action="editarActividad.php" method="POST">
             <input type="hidden" name="idActividad" value="<?= $row['idActividades']?>">
             <input type="text" name="NombreActividad" placeholder="Nombre" value="<?= $row['NombreActividad']?>">

@@ -19,7 +19,7 @@ $row = mysqli_fetch_array($guardar_ejercicio);
     <title>Editar ejercicio</title>
 </head>
 <body>
-    <div class="users-form">
+    <div class="formEjercicio form">
         <form action="editarEjercicio.php" method="POST">
             <input type="hidden" name="idEjercicio" value="<?= $row['idEjercicios']?>">
             <input type="text" name="NombreEjercicio" placeholder="Nombre del ejercicio" value="<?= $row['NombreEjercicio']?>">

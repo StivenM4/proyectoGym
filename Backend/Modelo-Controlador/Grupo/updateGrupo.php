@@ -20,7 +20,7 @@ $row = mysqli_fetch_array($guardar_grupo);
     <title>Editar grupo</title>
 </head>
 <body>
-    <div class="users-form">
+    <div class="formGrupo form">
         <form action="editarGrupo.php" method="POST">
             <input type="hidden" name="idGrupo" value="<?= $row['idGrupo']?>">    
             <input type="text" name="NombreGrupo" placeholder="Nombre del grupo" value="<?= $row['NombreGrupo']?>">

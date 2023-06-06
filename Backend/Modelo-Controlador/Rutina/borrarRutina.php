@@ -1,20 +1,23 @@
 <?php
-include("../../Conexion.php");
 
-class BorrarUsuario {
+include("../../Conexion.php"); 
+
+class BorrarRutina {
+
     private $conexion;
 
-    function __construct() {
+    function __construct() {  
         $this->conexion = new Conexion();
     }
 
-    function borrarUsuario() {
-        $idUsuario = $_GET["idUsuario"];
+    function borrarRutina() {
 
-        $borrar_Usuario= "DELETE FROM usuario WHERE idUsuario = '$idUsuario'";
-        $Usuario = mysqli_query($this->conexion->link, $borrar_Usuario);
+        $idRutina = $_GET["idRutina"];
 
-        if ($Usuario) {
+        $borrar_rutina = "DELETE FROM rutina WHERE idRutina = '$idRutina'";
+        $borrar = mysqli_query($this->conexion->link, $borrar_rutina);
+
+        if ($borrar) {
             Header("Location: ../../../pagAdministracion.php");
         } else {
             echo '
@@ -28,6 +31,6 @@ class BorrarUsuario {
     }
 }
 
-$borrarUsuario = new BorrarUsuario();
-$borrarUsuario->borrarUsuario();
+$borrarRutina = new BorrarRutina();
+$borrarRutina->borrarRutina();
 ?>

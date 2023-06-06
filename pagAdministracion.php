@@ -743,7 +743,7 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
             <div id="formServicio" class="contenedor">
                 <h1>Crear servicio</h1>
-                <form action="Backend/Modelo-Controlador/Servicios/agregarServicio.php" method="POST">
+                <form action="Backend/Modelo-Controlador/Servicios/agregarServicios.php" method="POST">
                     <input type="text" name="NombreServicios" placeholder="Nombre">
                     <textarea name="Descripcion" placeholder="Descripción"></textarea>
 
@@ -761,7 +761,7 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($guardar_Servicios)): ?>
+                        <?php while ($row = mysqli_fetch_array($guardar_Servicio)): ?>
                         <tr>
                             <td>
                                 <?= $row['idServicios'] ?>
@@ -773,9 +773,9 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                                 <?= $row['Descripcion'] ?>
                             </td>
                             <td>
-                                <a href="Backend/Modelo-Controlador/Servicios/updateServicio.php?idServicios=<?= $row['idServicios'] ?>"
+                                <a href="Backend/Modelo-Controlador/Servicios/updateServicios.php?idServicios=<?= $row['idServicios'] ?>"
                                     class="editar">Editar</a>
-                                <a href="Backend/Modelo-Controlador/Servicios/borrarServicio.php?idServicios=<?= $row['idServicios'] ?>"
+                                <a href="Backend/Modelo-Controlador/Servicios/borrarServicios.php?idServicios=<?= $row['idServicios'] ?>"
                                     class="borrar">borrar</a>
                             </td>
                         </tr>

@@ -19,7 +19,7 @@ $row = mysqli_fetch_array($guardar_entrenador);
     <title>Editar entrenador</title>
 </head>
 <body>
-    <div class="users-form">
+    <div class="formEntrenador form">
         <form action="editarEntrenador.php" method="POST">
             <input type="hidden" name="DniEntrenador" value="<?= $row['DniEntrenador']?>">
             <input type="text" name="NombreEntrenador" placeholder="Nombre del entrenador" value="<?= $row['NombreEntrenador']?>">

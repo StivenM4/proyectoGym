@@ -19,7 +19,7 @@ $row = mysqli_fetch_array($guardar_implemento);
     <title>Editar implemento</title>
 </head>
 <body>
-    <div class="users-form">
+    <div class="formImplemento form">
         <form action="editarImplemento.php" method="POST">
             <input type="hidden" name="idImplemento" value="<?= $row['idImplementos']?>">
             <input type="text" name="NombreImplemento" placeholder="Nombre del implemento" value="<?= $row['NombreImplemento']?>">

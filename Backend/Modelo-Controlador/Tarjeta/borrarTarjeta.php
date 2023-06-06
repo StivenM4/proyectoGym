@@ -1,20 +1,23 @@
 <?php
-include("../../Conexion.php");
 
-class BorrarUsuario {
+include("../../Conexion.php"); 
+
+class BorrarTarjeta {
+
     private $conexion;
 
-    function __construct() {
+    function __construct() {  
         $this->conexion = new Conexion();
     }
 
-    function borrarUsuario() {
-        $idUsuario = $_GET["idUsuario"];
+    function borrarTarjeta() {
 
-        $borrar_Usuario= "DELETE FROM usuario WHERE idUsuario = '$idUsuario'";
-        $Usuario = mysqli_query($this->conexion->link, $borrar_Usuario);
+        $idTarjeta = $_GET["idTarjeta"];
 
-        if ($Usuario) {
+        $borrar_tarjeta = "DELETE FROM tarjeta WHERE idTarjeta = '$idTarjeta'";
+        $borrar = mysqli_query($this->conexion->link, $borrar_tarjeta);
+
+        if ($borrar) {
             Header("Location: ../../../pagAdministracion.php");
         } else {
             echo '
@@ -28,6 +31,6 @@ class BorrarUsuario {
     }
 }
 
-$borrarUsuario = new BorrarUsuario();
-$borrarUsuario->borrarUsuario();
+$borrarTarjeta = new BorrarTarjeta();
+$borrarTarjeta->borrarTarjeta();
 ?>

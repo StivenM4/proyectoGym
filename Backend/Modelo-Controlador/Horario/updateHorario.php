@@ -20,7 +20,7 @@ $row = mysqli_fetch_array($guardar_horario);
     <title>Editar horario</title>
 </head>
 <body>
-    <div class="users-form">
+    <div class="formHorario form">
         <form action="editarHorario.php" method="POST">
             <input type="hidden" name="idHorario" value="<?= $row['idHorario']?>">
             <input type="text" name="NombreHorario" placeholder="Nombre del horario" value="<?= $row['NombreHorario']?>">
