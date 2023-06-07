@@ -1,47 +1,23 @@
+
+
 <?php
 
-include("Backend/Conexion.php"); 
+include("Backend/Consultas.php"); 
 
-$conexion = new Conexion();
+    session_start();
+    if(!isset($_SESSION['Administrador'])){
+        echo'
+        <script>
+            alert("Inicie sesion para continuar");
+        </script>
+        ';
+        header("location: login.php");
+        session_destroy();
+        die();
+        
+    }
 
-$verUsuario= "SELECT * FROM usuario";
-$guardar_usuario=mysqli_query($conexion->link,$verUsuario);
 
-$verActividades= "SELECT * FROM actividades";
-$guardar_Actividades=mysqli_query($conexion->link,$verActividades);
-
-$verClase= "SELECT * FROM clase";
-$guardar_Clase=mysqli_query($conexion->link,$verClase);
-
-$verEjercicios= "SELECT * FROM ejercicios";
-$guardar_Ejercicios=mysqli_query($conexion->link,$verEjercicios);
-
-$verEntrenador= "SELECT * FROM entrenador";
-$guardar_Entrenador=mysqli_query($conexion->link,$verEntrenador);
-
-$verGrupo= "SELECT * FROM grupo";
-$guardar_Grupo=mysqli_query($conexion->link,$verGrupo);
-
-$verHorario= "SELECT * FROM horario";
-$guardar_Horario=mysqli_query($conexion->link,$verHorario);
-
-$verImplementos= "SELECT * FROM implementos";
-$guardar_Implementos=mysqli_query($conexion->link,$verImplementos);
-
-$verPago= "SELECT * FROM pago";
-$guardar_Pago=mysqli_query($conexion->link,$verPago);
-
-$verPlan= "SELECT * FROM plan";
-$guardar_Plan=mysqli_query($conexion->link,$verPlan);
-
-$verRutina= "SELECT * FROM rutina";
-$guardar_Rutina=mysqli_query($conexion->link,$verRutina);
-
-$verServicio= "SELECT * FROM servicios";
-$guardar_Servicio=mysqli_query($conexion->link,$verServicio);
-
-$verTarjeta= "SELECT * FROM tarjeta";
-$guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 ?>
 
 <!DOCTYPE html>
@@ -55,12 +31,13 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
 <body>
     <script src="Frontend/assets/js/visibilidadAdmo.js"></script>
+    <link rel="stylesheet" href="Frontend/assets/css/pagAdmi.css">
     <header>
-        <div class="navegacion"></div>
+        <div class="navegacion">
         <h2 class="logo">ProFit Gym Admo 2.0</h2>
-        <nav>
-            <a href="index.html">Inicio</a>
-        </nav>
+        <div class="caja"><a class="btnSalir" href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a></div>
+        </div>
+
     </header>
     <div class="contenedorInicial">
         <div>
@@ -81,7 +58,7 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                 <div class="caja"><button onclick="divVisibility('formTarjeta')">Tarjeta</button></div>
                 
                 
-                <div class="caja"><a class="btnSalir" href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a></div>
+                
             </div>
         </div>
         <div class="Amdo">
@@ -105,20 +82,19 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                     <input type="submit" value="Agregar">
                 </form>
 
-
-                <div class="usuarioTabla">
                     <h2>Usuarios registrados</h2>
                     <table>
-                        <thead>
-                            <tr>
+                      
+                        <tbody>
+                        <tr class="InicioTabla" >
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Contra</th>
-
+                                <th>Editar</th>
+                           
                             </tr>
-                        </thead>
-                        <tbody>
+
                             <?php while ($row = mysqli_fetch_array($guardar_usuario) ): ?>
                             <tr>
                                 <th>
@@ -134,14 +110,15 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                                     <?= $row['Contrasena'] ?>
                                 </th>
                                 <th><a href="Backend/Modelo-Controlador/Usuario/updateUsuario.php?idUsuario=<?= $row['idUsuario'] ?>"
-                                        class="userEditar">Editar</a></th>
-                                <th><a href="Backend/Modelo-Controlador/Usuario/borrarUsuario.php?idUsuario=<?= $row['idUsuario'] ?>"
-                                        class="UserBorrar">borrar</a></th>
+                                        class="userEditar">Editar</a>
+                                <a href="Backend/Modelo-Controlador/Usuario/borrarUsuario.php?idUsuario=<?= $row['idUsuario'] ?>"
+                                        class="UserBorrar">borrar</a>
+                                </th>
                             </tr>
                             <?php endwhile; ?>
                         </tbody>
                     </table>
-                </div>
+                
             </div>
 
             <div id="formActividades" class="contenedor">
@@ -154,32 +131,32 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Actividades registradas</h2>
                 <table>
-                    <thead>
-                        <tr>
+                   
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Acciones</th>
+                            
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Actividades)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idActividades'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreActividad'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Descripcion'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Actividad/updateActividad.php?idActividad=<?= $row['idActividades'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Actividad/borrarActividad.php?idActividad=<?= $row['idActividades'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -210,38 +187,37 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Clases registradas</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Duración</th>
                             <th>Actividad</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Clase)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idClase'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreClase'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Duracion'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Actividades_idActividades'] ?>
 
-                            </td>
+                            </th>
 
-                            <td>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Clase/updateClase.php?idClase=<?= $row['idClase'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Clase/borrarClase.php?idClase=<?= $row['idClase'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -260,32 +236,31 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Ejercicios registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+                   
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Ejercicios)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idEjercicios'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreEjercicio'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Descripcion'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Ejercicio/updateEjercicio.php?idEjercicio=<?= $row['idEjercicios'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Ejercicio/borrarEjercicio.php?idEjercicio=<?= $row['idEjercicios'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -306,36 +281,35 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Entrenadores registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>DNI</th>
                             <th>Nombre</th>
                             <th>Edad</th>
                             <th>Número de teléfono</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Entrenador)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['DniEntrenador'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreEntrenador'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Edad'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['numTelefono'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Entrenador/updateEntrenador.php?DniEntrenador=<?= $row['DniEntrenador'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Entrenador/borrarEntrenador.php?DniEntrenador=<?= $row['DniEntrenador'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -370,8 +344,10 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Grupos registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+                
+                    
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -379,31 +355,29 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                             <th>Clase</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Grupo)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idGrupo'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreGrupo'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Descripcion'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Tamanio'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Clase_idClase'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Grupo/updateGrupo.php?idGrupo=<?= $row['idGrupo'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Grupo/borrarGrupo.php?idGrupo=<?= $row['idGrupo'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -436,36 +410,35 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Horarios registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Tiempo</th>
                             <th>Clase</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Horario)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idHorario'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreHorario'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Tiempo'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Clase_idClase'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Horario/updateHorario.php?idHorario=<?= $row['idHorario'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Horario/borrarHorario.php?idHorario=<?= $row['idHorario'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -485,8 +458,10 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Implementos registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    
+                    
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Tipo</th>
@@ -494,31 +469,29 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Implementos)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idImplementos'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreImplemento'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Tipo'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Funcionalidad'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Estado'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Implemento/updateImplemento.php?idImplemento=<?= $row['idImplementos'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Implemento/borrarImplemento.php?idImplemento=<?= $row['idImplementos'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -572,8 +545,9 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Pagos registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    
+                    <tbody >
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Tarjeta</th>
@@ -582,34 +556,32 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                             <th>Total</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Pago)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idPago'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Usuario_idUsuario'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Tarjeta_idTarjeta'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Plan_idPlan'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['FechaPago'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Total'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Pago/updatePago.php?idPago=<?= $row['idPago'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Pago/borrarPago.php?idPago=<?= $row['idPago'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -628,36 +600,35 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Planes registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Duración</th>
                             <th>Precio</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Plan)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idPlan'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombrePlan'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Duracion'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Precio'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Plan/updatePlan.php?idPlan=<?= $row['idPlan'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Plan/borrarPlan.php?idPlan=<?= $row['idPlan'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -701,8 +672,8 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Rutinas registradas</h2>
                 <table>
-                    <thead>
-                        <tr>
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Entrenador</th>
@@ -710,31 +681,29 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
                             <th>Observaciones</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Rutina)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idRutina'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Usuario_idUsuario'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Entrenador_DniEntrenador'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreRutina'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Observaciones'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Rutina/updateRutina.php?idRutina=<?= $row['idRutina'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Rutina/borrarRutina.php?idRutina=<?= $row['idRutina'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -752,32 +721,31 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Servicios registrados</h2>
                 <table>
-                    <thead>
-                        <tr>
+
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Servicio)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idServicios'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['NombreServicios'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Descripcion'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Servicios/updateServicios.php?idServicios=<?= $row['idServicios'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Servicios/borrarServicios.php?idServicios=<?= $row['idServicios'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -796,36 +764,35 @@ $guardar_Tarjeta=mysqli_query($conexion->link,$verTarjeta);
 
                 <h2>Tarjetas registradas</h2>
                 <table>
-                    <thead>
-                        <tr>
+
+                    <tbody>
+                    <tr class="InicioTabla" >
                             <th>ID</th>
                             <th>Número</th>
                             <th>Fecha de expiración</th>
                             <th>Código</th>
                             <th>Acciones</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_array($guardar_Tarjeta)): ?>
                         <tr>
-                            <td>
+                            <th>
                                 <?= $row['idTarjeta'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Numero'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['FechaExpiracion'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <?= $row['Codigo'] ?>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                                 <a href="Backend/Modelo-Controlador/Tarjeta/updateTarjeta.php?idTarjeta=<?= $row['idTarjeta'] ?>"
                                     class="editar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Tarjeta/borrarTarjeta.php?idTarjeta=<?= $row['idTarjeta'] ?>"
                                     class="borrar">borrar</a>
-                            </td>
+                            </th>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>

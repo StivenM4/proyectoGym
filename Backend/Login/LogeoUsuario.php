@@ -13,12 +13,12 @@ function __construct() {
 function Logear(){
 
     $email=$_POST['correoL'];
-    $contra =md5($_POST['contraL']);
+    $contrasena =md5( $_POST['contraL']);
 
-    $Buscar_Usuario ="SELECT * FROM usuarios WHERE emailUsuario='$email' AND contra='$contra'";
+    $Buscar_Usuario ="SELECT * FROM usuario WHERE correo='$email' AND Contrasena='$contrasena'";
     $Verificar_Usuario = mysqli_query($this->conexion->link,$Buscar_Usuario);
     
-    $Buscar_Administrador ="SELECT * FROM administradores WHERE email='$email' AND contra='$contra'";
+    $Buscar_Administrador ="SELECT * FROM administradores WHERE correoAdmo='$email' AND contraAdmo='$contrasena'";
     $verificar_Administrador = mysqli_query($this->conexion->link,$Buscar_Administrador);
     
     if(mysqli_num_rows($Verificar_Usuario)==1){

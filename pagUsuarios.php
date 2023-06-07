@@ -7,7 +7,7 @@
             alert("Inicie sesion para continuar");
         </script>
         ';
-        header("location: login.html");
+        header("location: login.");
         session_destroy();
         die();
         

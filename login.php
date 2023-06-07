@@ -41,30 +41,25 @@
                 <button class="ingreso">Login</button>
             </div>
         </div>
-        <form class="formulario register" action="Backend/Login/RegistroUsuario.php" method="post">
+        <form class="formulario register" action="Backend/Modelo-Controlador/Usuario/agregarUsuario.php" method="post">
             <h2>Registrarse</h2>
             <div class="caja">
                 <label>Nombre</label>
                 <i class="fa-solid fa-signature"></i>
-                <input type="text" name="nombreR" required>
+                <input type="text" name="NombreUsuario" required>
 
             </div>
-            <div class="caja">
-                <label>Usuario</label>
-                <i class="fa-solid fa-user"></i>
-                <input type="text" name="usuarioR" required>
-
-            </div>
+            
             <div class="caja">
                 <label>Email</label>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" name="emailR" required>
+                <input type="text" name="Correo" required>
 
             </div>
             <div class="caja">
                 <label>Contraseña</label>
                 <i class="fas fa-key icon"></i>
-                <input type="password" name="contrasR" required>
+                <input type="password" name="contrasena" required>
 
             </div>
             <div class="boton">
@@ -80,7 +75,7 @@
             <div class="caja">
                 <label>Email</label>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" name="correoL" required>
+                <input type="text" name="correoL" required>
 
             </div>
             <div class="caja">

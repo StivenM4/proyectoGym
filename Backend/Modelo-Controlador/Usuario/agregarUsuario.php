@@ -22,8 +22,9 @@ function __construct() {
 
 
         if($guardar_usuario){
-           
-            Header("Location: ../../../pagAdmo.php");
+            if(!isset($_SESSION['Administrador']) || !isset($_SESSION['Usuario'])){
+            
+            Header("Location: ../../../login.php");
                 
         }
         else{
@@ -37,6 +38,7 @@ function __construct() {
         mysqli_close($this->conexion->link);
         
     }
+}
 }
 $agregarUsuario = new agregarUsuario();
 
