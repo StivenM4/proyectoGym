@@ -36,52 +36,38 @@ $nombreUsuario = $row['NombreUsuario'];
 <head>
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="Frontend/assets/css/opcionesUser.css">
 </head>
 
 <body>
     <header>
-        <div class="navegacion"></div>
-        <nav>
+    <div class="navegacion">
+            <h2 class="logo">ProFit Gym</h2>
+            <div class="caja"><a class="btnSalir" href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a></div>
+        </div>
+ 
             
-            <a href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a>
-        </nav>
     </header>
     <div class="contenedorInicial">
-        <div class="opcionContra">
+        <div class="opcionContra contenedor">
         <form action="Backend/Modelo-Controlador/Opciones/cambiarContra.php" method="POST">
             <h2>cambiar contraseña</h2>
-            <input type="text" name="contrasenaAntigua" placeholder="Contraseña antigua">
-            <input type="text" name="contrasenaNueva" placeholder="Contraseña Nueva">
+            <input type="password" name="contrasenaAntigua" placeholder="Contraseña antigua">
+            <input type="password" name="contrasenaNueva" placeholder="Contraseña Nueva">    
             <input type="submit" value="Agregar">
         </form>
         </div>
-        <div class="opcionSalirDeGrupo">
-            <h2>salir del grupo</h2>
-            <form action="Backend/Modelo-Controlador/Opciones/salirGrupo.php" method="POST">
-        <select name="SalirGrupo">
-                        <?php 
-                        $guardar_Grupo=mysqli_query($conexion->link,$verGrupo);
-                        while ($row = mysqli_fetch_array($guardar_Grupo)): ?>
 
-                        <option value="<?= $row['idGrupo'] ?>">
-                            <?= $row['NombreGrupo'] ?>
-
-                        </option>
-
-                        <?php endwhile; ?>
-                    </select>
-            <input type="submit" value="SalirGrupo">
-        </form>
-
-        </div>
-        
-        <div class="eliminarCuenta">
+ 
+        <div class="eliminarCuenta contenedor">
             <h2>EliminarCuenta</h2>
         <form action="Backend/Modelo-Controlador/Opciones/eliminarCuenta.php" method="POST">
                             
         <input type="submit" value="Eliminar">
         </form>
+        <div class="cajaVolver contenedor">
+        <a href="pagUsuarios.php"> Volver</a>
+        </div>
         </div>
 
       

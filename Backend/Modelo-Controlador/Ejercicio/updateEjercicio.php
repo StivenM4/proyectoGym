@@ -15,11 +15,12 @@ $row = mysqli_fetch_array($guardar_ejercicio);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar ejercicio</title>
 </head>
 <body>
-    <div class="formEjercicio form">
+    <div class="formEjercicio Contenedor">
+    <h2>Editar Ejercicio</h2>
         <form action="editarEjercicio.php" method="POST">
             <input type="hidden" name="idEjercicio" value="<?= $row['idEjercicios']?>">
             <input type="text" name="NombreEjercicio" placeholder="Nombre del ejercicio" value="<?= $row['NombreEjercicio']?>">

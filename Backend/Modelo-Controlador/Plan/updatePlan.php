@@ -15,11 +15,12 @@ $row = mysqli_fetch_array($guardar_plan);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar plan</title>
 </head>
 <body>
-    <div class="formPlan form">
+    <div class="formPlan Contenedor">
+    <h2>Editar Plan</h2>
         <form action="editarPlan.php" method="POST">
             <input type="hidden" name="idPlan" value="<?= $row['idPlan']?>">
             <input type="text" name="NombrePlan" placeholder="Nombre del plan" value="<?= $row['NombrePlan']?>">

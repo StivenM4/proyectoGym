@@ -29,24 +29,16 @@ $guardar_Plan=mysqli_query($conexion->link,$verPlan);
     <head>
         <meta charset="utf-8">
         <title>Login</title>
-        <link rel="stylesheet" href=""> 
+        <link rel="stylesheet" href="Frontend/assets/css/formPago.css">
     </head>
 
     <body>
-        <header>
-            <div class="navegacion"></div>
-                <h2></h2>
-                <nav>
-                    <a href="#"></a>
-                    <a href="#"></a>
-                    <a href="#"></a>
-                </nav>      
-        </header>
+
 
         <div class="contenedor formulario">
            
                 <form action="Backend/Modelo-Controlador/FormPago/controlFormPago.php" method="post">
-                    <h2>Elige tu plan y entrena ya </h2>
+                    <h1>Elige tu plan y entrena ya </h1>
                     <div class="caja">
                         <label>Elige Tu Plan</label>
                         <select name="PlanPago">
@@ -74,9 +66,11 @@ $guardar_Plan=mysqli_query($conexion->link,$verPlan);
                     </div>
                     
                     <div class="botones">
-                        <button class="submit" type="submit" name="anexar">Pagar</button>
+    
+                        <input type="submit" value="Pagar">
 
                     </div>
+                    <div class="caja"><a class="btnSalir" href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a></div>
 
                 </form>
         </div>

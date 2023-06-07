@@ -13,9 +13,9 @@ class AgregarPago {
         $Usuario_idUsuario = $_POST['idUsuarioPago'];
         $Tarjeta_idTarjeta = $_POST['idTarjetaPago'];
         $Plan_idPlan = $_POST['PlanPago'];
-        $FechaPago = $_POST['FechaPago'];
 
-        $grabar_pago = "INSERT INTO pago (idPago, Usuario_idUsuario, Tarjeta_idTarjeta, Plan_idPlan, FechaPago, Total) VALUES ('$idPago', '$Usuario_idUsuario', '$Tarjeta_idTarjeta', '$Plan_idPlan', '$FechaPago', '$Total')";
+
+        $grabar_pago = "INSERT INTO pago (idPago, Usuario_idUsuario, Tarjeta_idTarjeta, Plan_idPlan, FechaPago, Total) VALUES ('$idPago', '$Usuario_idUsuario', '$Tarjeta_idTarjeta', '$Plan_idPlan', CURDATE(), '$Total')";
         $guardar_pago = mysqli_query($this->conexion->link, $grabar_pago);
 
         if ($guardar_pago) {

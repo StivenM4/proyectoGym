@@ -21,12 +21,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar rutina</title>
 </head>
 
 <body>
-    <div class="FormRutina form">
+    <div class="FormRutina Contenedor">
+    <h2>Editar Rutina</h2>
         <form action="editarRutina.php" method="POST">
             <input type="hidden" name="idRutina" value="<?= $row['idRutina']?>">
 

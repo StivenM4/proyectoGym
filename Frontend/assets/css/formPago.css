@@ -1,0 +1,89 @@
+
+body {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    height: 100vh;
+    margin: 0;
+}
+
+.formulario {
+    display: flex;
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.caja {
+    margin-bottom: 10px;
+}
+
+h1{
+    text-shadow: 0 0 5px #00ADB5,
+    0 0 25px #00ADB5;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"] {
+
+    width: 95%;
+    padding: 8px;
+    border:2px solid;
+    border-radius:4px;
+    outline:none;
+    transition:.3s;
+    border-color: #00ADB5;
+    font-size: 1em;
+}
+
+
+
+.botones {
+    text-align: center;
+}
+
+input[type=submit]{
+    padding: 12px 50px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: white; 
+    color: black; 
+    border-color: #666666;
+    
+}
+
+select {
+
+    font-size: 1em;
+    cursor: pointer;
+    padding: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border:2px solid #aaa;
+    border-radius:4px;
+    outline:none;
+    transition:.3s;
+    border-color: #00ADB5;
+    color: #717070;
+
+  }
+
+  a.btnSalir {
+
+    text-decoration: none;
+    color: black;
+    transition: all 500ms ease-in;
+}

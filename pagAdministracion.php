@@ -42,6 +42,7 @@ include("Backend/Consultas.php");
             <div class="cajaBotones">
 
                 <div class="caja"><button onclick="divVisibility('formUsuario')">Usuarios</button></div>
+                <div class="caja"><button onclick="divVisibility('formInscripcion')">Inscripcion</button></div>
                 <div class="caja"><button onclick="divVisibility('formActividades')">Actividades</button></div>
                 <div class="caja"><button onclick="divVisibility('formClase')">Clase</button></div>
                 <div class="caja"><button onclick="divVisibility('formEjercicios')">Ejercicios</button></div>
@@ -49,11 +50,16 @@ include("Backend/Consultas.php");
                 <div class="caja"><button onclick="divVisibility('formGrupo')">Grupo</button></div>
                 <div class="caja"><button onclick="divVisibility('formHorario')">Horario</button></div>
                 <div class="caja"><button onclick="divVisibility('formImplementos')">Implementos</button></div>
+                <div class="caja"><button onclick="divVisibility('formImplementosZona')">ImplementosZona</button></div>        
                 <div class="caja"><button onclick="divVisibility('formPago')">Pago</button></div>
                 <div class="caja"><button onclick="divVisibility('formPlan')">Plan</button></div>
                 <div class="caja"><button onclick="divVisibility('formRutina')">Rutina</button></div>
+                <div class="caja"><button onclick="divVisibility('formEjerciciosRutina')">EjerciciosRutina</button></div>            
+                <div class="caja"><button onclick="divVisibility('formAcceso')">Acceso</button></div>
+                <div class="caja"><button onclick="divVisibility('formZona')">Zona</button></div>
                 <div class="caja"><button onclick="divVisibility('formServicio')">Servicio</button></div>
                 <div class="caja"><button onclick="divVisibility('formTarjeta')">Tarjeta</button></div>
+                
 
 
 
@@ -118,6 +124,83 @@ include("Backend/Consultas.php");
                 </table>
 
             </div>
+
+            <div id="formInscripcion" class="contenedor">
+    <h1>Inscribir usuario en grupo</h1>
+    <form action="Backend/Modelo-Controlador/Inscripcion/agregarInscripcion.php" method="POST">
+    <select name="Usuario_idUsuario">
+                        <?php 
+                        
+                        $guardar_InscripcionUsuario=mysqli_query($conexion->link,$verUsuario);
+                        while ($row = mysqli_fetch_array($guardar_InscripcionUsuario)): ?>
+
+                        <option value="<?= $row['idUsuario'] ?>">
+                            <?= $row['NombreUsuario'] ?>
+
+                        </option>
+
+                        <?php endwhile; ?>
+                    </select>
+
+            <select name="Grupo_idGrupo">
+                        <?php 
+                        
+                        $guardar_InscripcionGrupo=mysqli_query($conexion->link,$verGrupo);
+                        while ($row = mysqli_fetch_array($guardar_InscripcionGrupo)): ?>
+
+                        <option value="<?= $row['idGrupo'] ?>">
+                            <?= $row['NombreGrupo'] ?>
+
+                        </option>
+
+                        <?php endwhile; ?>
+                    </select>
+        <input type="date" name="FechaInscripcion" oninput="formatDate()" placeholder="Fecha de inscripción">
+
+        <input type="submit" value="Inscribir">
+    </form>
+
+    <h2>Inscripciones realizadas</h2>
+    <table>
+        
+        <tbody>
+        <tr class="InicioTabla">
+                <th>Usuario</th>
+                <th>Grupo</th>
+                <th>Fecha de inscripción</th>
+                <th>Acciones</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_array($guardar_Incripcion)): ?>
+                <?php
+                        $idUsuario = $row['Usuario_idUsuario'];
+                        $consultaUsuario3 = "SELECT NombreUsuario FROM Usuario WHERE idUsuario = '$idUsuario'";
+                        $resultadoUsuario3 = mysqli_query($conexion->link, $consultaUsuario3);
+                        $rowUsuario3 = mysqli_fetch_array($resultadoUsuario3);
+                        $nombreUsuario3 = $rowUsuario3['NombreUsuario'];
+
+
+                        $idGrupo = $row['Grupo_idGrupo'];
+                        $consultaGrupo3 = "SELECT NombreGrupo FROM Grupo WHERE idGrupo = '$idGrupo'";
+                        $resultadoGrupo3 = mysqli_query($conexion->link, $consultaGrupo3);
+                        $rowGrupo3 = mysqli_fetch_array($resultadoGrupo3);
+                        $nombreGrupo3 = $rowGrupo3['NombreGrupo'];
+
+                        ?>
+                        
+                <tr>
+
+                    <td><?= $nombreUsuario3 ?></td>
+                    <td><?= $nombreGrupo3?></td>
+                    <td><?= $row['FechaInscripcion'] ?></td>
+                    <td>
+                    <a href="Backend/Modelo-Controlador/Inscripcion/updateInscripcion.php?Usuario_idUsuario=<?= $row['Usuario_idUsuario'] ?>&Grupo_idGrupo=<?= $row['Grupo_idGrupo'] ?>" class="editar">Editar</a>
+                    <a href="Backend/Modelo-Controlador/Inscripcion/borrarInscripcion.php?Usuario_idUsuario=<?= $row['Usuario_idUsuario'] ?>&Grupo_idGrupo=<?= $row['Grupo_idGrupo'] ?>" class="eliminar">Eliminar</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
 
             <div id="formActividades" class="contenedor">
                 <h1>Crear actividad</h1>
@@ -195,6 +278,14 @@ include("Backend/Consultas.php");
                             <th>Acciones</th>
                         </tr>
                         <?php while ($row = mysqli_fetch_array($guardar_Clase)): ?>
+
+                            <?php
+                    $idActividad = $row['Actividades_idActividades'];
+                    $consultaActividad = "SELECT NombreActividad FROM Actividades WHERE idActividades = '$idActividad'";
+                    $resultadoActividad = mysqli_query($conexion->link, $consultaActividad);
+                    $rowActividad = mysqli_fetch_array($resultadoActividad);
+                    $nombreActividad = $rowActividad['NombreActividad'];;
+                    ?>
                         <tr>
                             <th>
                                 <?= $row['idClase'] ?>
@@ -206,7 +297,7 @@ include("Backend/Consultas.php");
                                 <?= $row['Duracion'] ?>
                             </th>
                             <th>
-                                <?= $row['Actividades_idActividades'] ?>
+                            <?= $nombreActividad ?>
 
                             </th>
 
@@ -354,6 +445,15 @@ include("Backend/Consultas.php");
                             <th>Acciones</th>
                         </tr>
                         <?php while ($row = mysqli_fetch_array($guardar_Grupo)): ?>
+
+                            <?php
+                    $idClase = $row['Clase_idClase'];
+                    $consultaClase1 = "SELECT NombreClase FROM Clase WHERE idClase = '$idClase'";
+                    $resultadoClase1 = mysqli_query($conexion->link, $consultaClase1);
+                    $rowClase1 = mysqli_fetch_array($resultadoClase1);
+                    $nombreClase1 = $rowClase1['NombreClase'];
+                    ?>
+
                         <tr>
                             <th>
                                 <?= $row['idGrupo'] ?>
@@ -368,7 +468,7 @@ include("Backend/Consultas.php");
                                 <?= $row['Tamanio'] ?>
                             </th>
                             <th>
-                                <?= $row['Clase_idClase'] ?>
+                                <?= $nombreClase1 ?>
                             </th>
                             <th>
                                 <a href="Backend/Modelo-Controlador/Grupo/updateGrupo.php?idGrupo=<?= $row['idGrupo'] ?>"
@@ -418,6 +518,14 @@ include("Backend/Consultas.php");
                             <th>Acciones</th>
                         </tr>
                         <?php while ($row = mysqli_fetch_array($guardar_Horario)): ?>
+
+                            <?php
+                    $idClase = $row['Clase_idClase'];
+                    $consultaClase2 = "SELECT NombreClase FROM Clase WHERE idClase = '$idClase'";
+                    $resultadoClase2 = mysqli_query($conexion->link, $consultaClase2);
+                    $rowClase2 = mysqli_fetch_array($resultadoClase2);
+                    $nombreClase2 = $rowClase2['NombreClase'];
+                    ?>
                         <tr>
                             <th>
                                 <?= $row['idHorario'] ?>
@@ -429,7 +537,7 @@ include("Backend/Consultas.php");
                                 <?= $row['Tiempo'] ?>
                             </th>
                             <th>
-                                <?= $row['Clase_idClase'] ?>
+                                <?= $nombreClase2 ?>
                             </th>
                             <th>
                                 <a href="Backend/Modelo-Controlador/Horario/updateHorario.php?idHorario=<?= $row['idHorario'] ?>"
@@ -496,6 +604,73 @@ include("Backend/Consultas.php");
                 </table>
             </div>
 
+            <div id="formImplementosZona" class="contenedor">
+    <h1>Asignar implementos a zona</h1>
+    <form action="Backend/Modelo-Controlador/ImplementosZona/agregarImplementosZona.php" method="POST">
+        <select name="Zona_idZona">
+        <?php 
+                        
+                        $guardar_ImZona=mysqli_query($conexion->link,$verZona);
+                        while ($row = mysqli_fetch_array($guardar_ImZona)): ?>
+                <option value="<?= $row ['idZona'] ?>">
+                <?= $row ['NombreZona'] ?>
+            </option>
+            <?php endwhile; ?>
+        </select>
+        <select name="Implementos_idImplementos">
+        <?php 
+                        
+                        $guardar_imImplementos=mysqli_query($conexion->link,$verImplementos);
+                        while ($row = mysqli_fetch_array($guardar_imImplementos)): ?>
+                <option value="<?= $row ['idImplementos'] ?>">
+                <?= $row ['NombreImplemento'] ?>
+            </option>
+            <?php endwhile; ?>
+        </select>
+
+        <input type="submit" value="Asignar">
+    </form>
+
+    <h2>Implementos asignados a zonas</h2>
+    <table>
+
+        <tbody>
+        <tr class="InicioTabla">
+                <th>Zona</th>
+                <th>Implemento</th>
+                <th>Acciones</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_array($guardar_ImplementosZona)): ?>
+                <?php
+                        $idZona = $row['Zona_idZona'];
+                        $consultaZona2 = "SELECT NombreZona FROM Zona WHERE idZona = '$idZona'";
+                        $resultadoZona2 = mysqli_query($conexion->link, $consultaZona2);
+                        $rowZona2 = mysqli_fetch_array($resultadoZona2);
+                        $nombreZona2 = $rowZona2['NombreZona'];
+                      
+
+                        $idImplemento = $row['Implementos_idImplementos'];
+                        $consultaImplemento = "SELECT NombreImplemento FROM Implementos WHERE idImplementos = '$idImplemento'";
+                        $resultadoImplemento = mysqli_query($conexion->link, $consultaImplemento);
+                        $rowImplemento = mysqli_fetch_array($resultadoImplemento);
+                        $nombreImplemento = $rowImplemento['NombreImplemento'];
+                       
+                        ?>
+                <tr>
+                    <td><?= $nombreZona2 ?></td>
+                    <td><?= $nombreImplemento ?></td>
+                    <td>
+                       
+                        <a href="Backend/Modelo-Controlador/ImplementosZona/updateImplementosZona.php?Zona_idZona=<?= $row['Zona_idZona'] ?>&Implementos_idImplementos=<?= $row['Implementos_idImplementos'] ?>" class="editar">Editar</a>
+                        <a href="Backend/Modelo-Controlador/ImplementosZona/borrarImplementosZona.php?Zona_idZona=<?= $row['Zona_idZona'] ?>&Implementos_idImplementos=<?= $row['Implementos_idImplementos'] ?>" class="eliminar">Eliminar</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
+
+
             <div id="formPago" class="contenedor">
                 <h1>Realizar pago</h1>
                 <form action="Backend/Modelo-Controlador/Pago/agregarPago.php" method="POST">
@@ -536,8 +711,6 @@ include("Backend/Consultas.php");
                         <?php endwhile; ?>
                     </select>
 
-
-                    <input type="date" name="FechaPago" oninput="formatDate() placeholder=" Fecha de Pago">
                     <input type="submit" value="Realizar Pago">
                 </form>
 
@@ -555,18 +728,42 @@ include("Backend/Consultas.php");
                             <th>Acciones</th>
                         </tr>
                         <?php while ($row = mysqli_fetch_array($guardar_Pago)): ?>
+
+                            <?php
+                    $idUsuario = $row['Usuario_idUsuario'];
+                    $consultaUsuario1 = "SELECT NombreUsuario FROM Usuario WHERE idUsuario = '$idUsuario'";
+                    $resultadoUsuario1 = mysqli_query($conexion->link, $consultaUsuario1);
+                    $rowUsuario1 = mysqli_fetch_array($resultadoUsuario1);
+                    $nombreUsuario1 = $rowUsuario1['NombreUsuario'];
+
+                    $idTarjeta = $row['Tarjeta_idTarjeta'];
+                    $consultaTarjeta = "SELECT Numero FROM Tarjeta WHERE idTarjeta = '$idTarjeta'";
+                    $resultadoTarjeta = mysqli_query($conexion->link, $consultaTarjeta);
+                    $rowTarjeta = mysqli_fetch_array($resultadoTarjeta);
+                    $numeroTarjeta = $rowTarjeta['Numero'];
+           
+                    $idPlan = $row['Plan_idPlan'];
+                    $consultaPlan1 = "SELECT NombrePlan FROM Plan WHERE idPlan = '$idPlan'";
+                    $resultadoPlan1 = mysqli_query($conexion->link, $consultaPlan1);
+                    $rowPlan1 = mysqli_fetch_array($resultadoPlan1);
+                    $nombrePlan1 = $rowPlan1['NombrePlan'];
+                  
+                    
+
+
+                    ?>
                         <tr>
                             <th>
                                 <?= $row['idPago'] ?>
                             </th>
                             <th>
-                                <?= $row['Usuario_idUsuario'] ?>
+                                <?= $nombreUsuario1 ?>
                             </th>
                             <th>
-                                <?= $row['Tarjeta_idTarjeta'] ?>
+                                <?= $numeroTarjeta ?>
                             </th>
                             <th>
-                                <?= $row['Plan_idPlan'] ?>
+                                <?= $nombrePlan1 ?>
                             </th>
                             <th>
                                 <?= $row['FechaPago'] ?>
@@ -632,6 +829,112 @@ include("Backend/Consultas.php");
                     </tbody>
                 </table>
             </div>
+
+            <div id="formAcceso" class="contenedor">
+    <h1>Crear acceso</h1>
+    <form action="Backend/Modelo-Controlador/Acceso/agregarAcceso.php" method="POST">
+        <select name="Zona_idZona">
+            <?php 
+            $guardar_AccesoZona=mysqli_query($conexion->link,$verZona);
+                        while ($row = mysqli_fetch_array($guardar_AccesoZona)): ?> 
+
+                <option value="<?= $row ['idZona'] ?>">
+                <?= $row ['NombreZona'] ?>
+            </option>
+                <?php endwhile; ?>
+        </select>
+        <select name="Plan_idPlan">
+        <?php 
+            $guardar_AccesoPlan=mysqli_query($conexion->link,$verPlan);
+                        while ($row = mysqli_fetch_array($guardar_AccesoPlan)): ?>
+                <option value="<?= $row ['idPlan'] ?>">
+                <?= $row ['NombrePlan'] ?>
+            </option>
+                <?php endwhile; ?>
+        </select>
+
+        <input type="submit" value="Agregar">
+    </form>
+
+    <h2>Accesos registrados</h2>
+    <table>
+       
+        <tbody>
+        <tr class="InicioTabla">
+                <th>Zona</th>
+                <th>Plan</th>
+                <th>Acciones</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_array($guardar_Acceso)): ?>
+                <?php
+                        $idZona = $row['Zona_idZona'];
+                        $consultaZona1 = "SELECT NombreZona FROM zona WHERE idZona = '$idZona'";
+                        $resultadoZona1 = mysqli_query($conexion->link, $consultaZona1);
+                        $rowZona1 = mysqli_fetch_array($resultadoZona1);
+                        $nombreZona1 = $rowZona1['NombreZona'];
+
+
+                        $idPlan = $row['Plan_idPlan'];
+                        $consultaPlan2 = "SELECT NombrePlan FROM Plan WHERE idPlan = '$idPlan'";
+                        $resultadoPlan2 = mysqli_query($conexion->link, $consultaPlan2);
+                        $rowPlan2 = mysqli_fetch_array($resultadoPlan2);
+                        $nombrePlan2 = $rowPlan2['NombrePlan'];
+
+                        ?>
+                <tr>
+
+                    <td><?= $nombreZona1 ?></td>
+                    <td><?= $nombrePlan2 ?></td>
+                    <td>
+                    <a href="Backend/Modelo-Controlador/Acceso/updateAcceso.php?Zona_idZona=<?= $row['Zona_idZona'] ?>&Plan_idPlan=<?= $row['Plan_idPlan'] ?>" class="editar">Editar</a>
+                    <a href="Backend/Modelo-Controlador/Acceso/borrarAcceso.php?Zona_idZona=<?= $row['Zona_idZona'] ?>&Plan_idPlan=<?= $row['Plan_idPlan'] ?>" class="eliminar">Eliminar</a>
+                       
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
+
+
+
+            <div id="formZona" class="contenedor">
+    <h1>Crear zona</h1>
+    <form action="Backend/Modelo-Controlador/Zona/agregarZona.php" method="POST">
+        <input type="text" name="Nombre" placeholder="Nombre">
+        <input type="text" name="Ubicacion" placeholder="Ubicación">
+
+        <input type="submit" value="Agregar">
+    </form>
+
+    <h2>Zonas registradas</h2>
+    <table>
+
+        <tbody>
+        <tr class="InicioTabla">
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_array($guardar_Zona)): ?>
+                <tr>
+                    <th><?= $row['idZona'] ?></th>
+                    <th><?= $row['NombreZona'] ?></th>
+                    <th><?= $row['Ubicacion'] ?></th>
+                    <th>
+                        <a href="Backend/Modelo-Controlador/Zona/updateZona.php?idZona=<?= $row['idZona'] ?>" class="editar">Editar</a>
+                        <a href="Backend/Modelo-Controlador/Zona/borrarZona.php?idZona=<?= $row['idZona'] ?>" class="eliminar">Eliminar</a>
+                    </th>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
+
+
+
+
             <div id="formRutina" class="contenedor">
                 <h1>Crear rutina</h1>
                 <form action="Backend/Modelo-Controlador/Rutina/agregarRutina.php" method="POST">
@@ -680,15 +983,29 @@ include("Backend/Consultas.php");
                             <th>Acciones</th>
                         </tr>
                         <?php while ($row = mysqli_fetch_array($guardar_Rutina)): ?>
+
+                            <?php
+                    $idUsuario = $row['Usuario_idUsuario'];
+                    $consultaUsuario2 = "SELECT NombreUsuario FROM Usuario WHERE idUsuario = '$idUsuario'";
+                    $resultadoUsuario2 = mysqli_query($conexion->link, $consultaUsuario2);
+                    $rowUsuario2 = mysqli_fetch_array($resultadoUsuario2);
+                    $nombreUsuario2 = $rowUsuario2['NombreUsuario'];
+                    
+                    $dniEntrenador = $row['Entrenador_DniEntrenador'];
+                    $consultaEntrenador = "SELECT NombreEntrenador FROM Entrenador WHERE DniEntrenador = '$dniEntrenador'";
+                    $resultadoEntrenador = mysqli_query($conexion->link, $consultaEntrenador);
+                    $rowEntrenador = mysqli_fetch_array($resultadoEntrenador);
+                    $nombreEntrenador = $rowEntrenador['NombreEntrenador'];
+                    ?>
                         <tr>
                             <th>
                                 <?= $row['idRutina'] ?>
                             </th>
                             <th>
-                                <?= $row['Usuario_idUsuario'] ?>
+                                <?= $nombreUsuario2 ?>
                             </th>
                             <th>
-                                <?= $row['Entrenador_DniEntrenador'] ?>
+                                <?= $nombreEntrenador ?>
                             </th>
                             <th>
                                 <?= $row['NombreRutina'] ?>
@@ -707,6 +1024,87 @@ include("Backend/Consultas.php");
                     </tbody>
                 </table>
             </div>
+
+            <div id="formEjerciciosRutina" class="contenedor">
+    <h1>Asignar ejercicios a rutina</h1>
+    <form action="Backend/Modelo-Controlador/EjerciciosRutina/agregarEjerciciosRutina.php" method="POST">
+        <select name="Rutina_idRutina">
+
+            <?php $guardar_EjerRutina=mysqli_query($conexion->link,$verRutina);
+                        while ($row = mysqli_fetch_array($guardar_EjerRutina)): ?>
+                <option value="<?= $row ['idRutina'] ?>">
+                <?= $row ['NombreRutina'] ?>
+            </option>
+
+            <?php endwhile; ?>
+        </select>
+
+        <select name="Ejercicios_idEjercicios">
+            <?php $guardar_EjerEjercicios=mysqli_query($conexion->link,$verEjercicios);
+                        while ($row = mysqli_fetch_array($guardar_EjerEjercicios)): ?>
+
+                        <option value="<?= $row['idEjercicios'] ?>">
+                            <?= $row['NombreEjercicio'] ?>
+
+                        </option>
+
+           <?php endwhile; ?>
+                
+        </select>
+        <input type="number" name="Series" placeholder="Series">
+        <input type="number" name="Repeticiones" placeholder="Repeticiones">
+
+        <input type="submit" value="Asignar">
+    </form>
+
+    <h2>Ejercicios asignados a rutinas</h2>
+    <table>
+        
+        <tbody>
+        <tr class="InicioTabla">
+
+        <th>Rutina</th>
+        <th>Ejercicio</th>
+        <th>Series</th>
+        <th>Repeticiones</th>
+        <th>Acciones</th>
+        </tr>
+            <?php while ($row = mysqli_fetch_array($guardar_EjerciciosRutina)): ?>
+                <?php
+                        $idRutina = $row['Rutina_idRutina'];
+                        $consultaRutina = "SELECT NombreRutina FROM Rutina WHERE idRutina = '$idRutina'";
+                        $resultadoRutina = mysqli_query($conexion->link, $consultaRutina);
+                        $rowRutina = mysqli_fetch_array($resultadoRutina);
+                        $nombreRutina = $rowRutina['NombreRutina'];
+
+
+                        $idEjercicio = $row['Ejercicios_idEjercicios'];
+                        $consultaEjercicio = "SELECT NombreEjercicio FROM Ejercicios WHERE idEjercicios = '$idEjercicio'";
+                        $resultadoEjercicio = mysqli_query($conexion->link, $consultaEjercicio);
+                        $rowEjercicio = mysqli_fetch_array($resultadoEjercicio);
+                        $nombreEjercicio = $rowEjercicio['NombreEjercicio'];
+
+                        ?>
+
+                <tr>
+
+                    <td><?= $nombreRutina ?></td>
+                    <td><?= $nombreEjercicio  ?></td>
+                    <td><?= $row['Series'] ?></td>
+                    <td><?= $row['Repeticiones'] ?></td>
+                    <td>
+                        
+                    <a href="Backend/Modelo-Controlador/EjerciciosRutina/updateEjerciciosRutina.php?Rutina_idRutina=<?= $row['Rutina_idRutina'] ?>&Ejercicios_idEjercicios=<?= $row['Ejercicios_idEjercicios'] ?>" class="editar">Editar</a>
+                    <a href="Backend/Modelo-Controlador/EjerciciosRutina/borrarEjerciciosRutina.php?Rutina_idRutina=<?= $row['Rutina_idRutina'] ?>&Ejercicios_idEjercicios=<?= $row['Ejercicios_idEjercicios'] ?>" class="eliminar">Eliminar</a>
+                                           
+                    
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
+
 
             <div id="formServicio" class="contenedor">
                 <h1>Crear servicio</h1>
@@ -796,12 +1194,8 @@ include("Backend/Consultas.php");
                     </tbody>
                 </table>
             </div>
-
-
-
         </div>
     </div>
-
 </body>
 
 </html>

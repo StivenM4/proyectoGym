@@ -26,7 +26,6 @@
         <h2 class="logo">ProFit Gym</h2>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="#">Contactanos</a>
             <a href="#" class="btnLogin">login</a>
         </nav>
         </div>
@@ -53,13 +52,13 @@
             <div class="caja">
                 <label>Email</label>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="text" name="Correo" required>
+                <input type="email" name="Correo" required>
 
             </div>
             <div class="caja">
                 <label>Contraseña</label>
                 <i class="fas fa-key icon"></i>
-                <input type="password" name="contrasena" required>
+                <input type="password" name="Contrasena" required>
 
             </div>
             <div class="boton">
@@ -75,7 +74,7 @@
             <div class="caja">
                 <label>Email</label>
                 <i class="fa-solid fa-envelope"></i>
-                <input type="text" name="correoL" required>
+                <input type="email" name="correoL" required>
 
             </div>
             <div class="caja">

@@ -16,11 +16,12 @@ $row = mysqli_fetch_array($guardar_clase);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar clase</title>
 </head>
 <body>
-    <div class="formClase form">
+    <div class="formClase Contenedor">
+    <h2>Editar Clase</h2>
         <form action="editarClase.php" method="POST">
             <input type="hidden" name="idClase" value="<?= $row['idClase']?>">
             <input type="text" name="NombreClase" placeholder="Nombre de la clase" value="<?= $row['NombreClase']?>">

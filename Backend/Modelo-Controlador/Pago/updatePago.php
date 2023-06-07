@@ -19,11 +19,12 @@ $row1 = mysqli_fetch_array($guardar_pago);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar pago</title>
 </head>
 <body>
-    <div class="formPago form">
+    <div class="formPago Contenedor">
+    <h2>Editar Pago</h2>
         <form action="editarPago.php" method="POST">
             <input type="hidden" name="idPago" value="<?= $row['idPago']?>">
             <select name="idUsuarioPago">

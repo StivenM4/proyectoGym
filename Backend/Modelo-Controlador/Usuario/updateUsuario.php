@@ -15,19 +15,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
         <title>Editar usuarios</title>
         
     </head>
     <body>
-        <div class="users-form">
+        <div class="usuarios Contenedor">
+            <h2>Editar Usuario</h2>
             <form action="editarUsuario.php" method="POST">
                 <input type="hidden" name="idUsuario" value="<?= $row['idUsuario']?>">
                 <input type="text" name="NombreUsuario" placeholder="Nombre" value="<?= $row['NombreUsuario']?>">
                 <input type="text" name="Correo" placeholder="Apellidos" value="<?= $row['Correo']?>">
                 <input type="password" name="Contrasena" placeholder="contraseña" value="<?= $row['Contrasena']?>">
-               
-
                 <input type="submit" value="Actualizar">
             </form>
         </div>

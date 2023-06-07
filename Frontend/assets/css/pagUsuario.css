@@ -32,22 +32,41 @@ body {
 .sesion a:nth-child(1){
     margin-right: 10px;
 }
+.cajaUsuario {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border: 2px solid #a6a4a4;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+.cajaUsuario h1 {
+    text-shadow: 0 0 5px #00ADB5;
+}
+
+.caja {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
 .contenedorInicial{
+    display: flex;
     justify-content: space-between;
     margin-top: 50px;
 
 }
 
 .cajaBotones{
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .caja button{
-    padding: 6px;
-    
+    padding: 6px;  
     margin-bottom: 15px;
     margin-right: 15px;
     border-radius: 15px;
@@ -59,7 +78,7 @@ body {
     margin-bottom: 10px;
 }
 
-.Amdo{
+.usera{
     display: inline-block;
     width: 1550px;
 }
@@ -71,6 +90,9 @@ body {
     margin: 20px auto;
     text-align: center;
 
+}
+.contenedor{
+    margin-top: 60px;
 }
 
 .contenedor form input{
@@ -238,4 +260,3 @@ header {
     border-color: #00ADB5;
     color: #717070;
   }
- 

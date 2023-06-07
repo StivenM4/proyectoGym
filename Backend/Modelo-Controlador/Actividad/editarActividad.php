@@ -16,7 +16,8 @@ class editarActividad {
         $NombreActividad = $_POST['NombreActividad'];
         $Descripcion = $_POST['Descripcion'];
 
-        $actualizar_Actividad = "UPDATE actividades SET NombreActividad = '$NombreActividad', Descripcion = '$Descripcion' WHERE idActividades = '$idActividad'";
+        $actualizar_Actividad = "UPDATE actividades SET NombreActividad = '$NombreActividad', Descripcion = '$Descripcion' 
+        WHERE idActividades = '$idActividad'";
         $guardar_New_Actividad = mysqli_query($this->conexion->link, $actualizar_Actividad);
 
         if ($guardar_New_Actividad) {

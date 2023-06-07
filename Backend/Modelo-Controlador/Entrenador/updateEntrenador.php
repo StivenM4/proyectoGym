@@ -15,12 +15,13 @@ $row = mysqli_fetch_array($guardar_entrenador);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar entrenador</title>
 </head>
 <body>
     <div class="formEntrenador form">
         <form action="editarEntrenador.php" method="POST">
+            <h2>Editar Entrenador</h2>
             <input type="hidden" name="DniEntrenador" value="<?= $row['DniEntrenador']?>">
             <input type="text" name="NombreEntrenador" placeholder="Nombre del entrenador" value="<?= $row['NombreEntrenador']?>">
             <input type="number" name="Edad" placeholder="Edad" value="<?= $row['Edad']?>">

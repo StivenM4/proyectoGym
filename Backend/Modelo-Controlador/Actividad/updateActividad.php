@@ -15,11 +15,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar actividades</title>
 </head>
 <body>
-    <div class="formActividad form">
+    <div class="formActividad Contenedor">
+    <h2>Editar Actividad</h2>
         <form action="editarActividad.php" method="POST">
             <input type="hidden" name="idActividad" value="<?= $row['idActividades']?>">
             <input type="text" name="NombreActividad" placeholder="Nombre" value="<?= $row['NombreActividad']?>">

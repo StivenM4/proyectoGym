@@ -16,11 +16,12 @@ $row = mysqli_fetch_array($guardar_grupo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar grupo</title>
 </head>
 <body>
-    <div class="formGrupo form">
+    <div class="formGrupo Contenedor">
+    <h2>Editar Grupo</h2>
         <form action="editarGrupo.php" method="POST">
             <input type="hidden" name="idGrupo" value="<?= $row['idGrupo']?>">    
             <input type="text" name="NombreGrupo" placeholder="Nombre del grupo" value="<?= $row['NombreGrupo']?>">

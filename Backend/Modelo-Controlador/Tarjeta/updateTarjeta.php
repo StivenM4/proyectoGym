@@ -15,11 +15,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar tarjeta</title>
 </head>
 <body>
-    <div class="formTarjeta form">
+    <div class="formTarjeta Contenedor">
+    <h2>Editar Tarjeta</h2>
         <form action="editarTarjeta.php" method="POST">
             <input type="hidden" name="idTarjeta" value="<?= $row['idTarjeta']?>">
             <input type="text" name="Numero" placeholder="Número de tarjeta" value="<?= $row['Numero']?>">

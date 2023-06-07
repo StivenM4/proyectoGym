@@ -16,11 +16,12 @@ $row = mysqli_fetch_array($guardar_horario);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../Frontend/assets/css/updates.css">
     <title>Editar horario</title>
 </head>
 <body>
-    <div class="formHorario form">
+    <div class="formHorario Contenedor">
+    <h2>Editar Horario</h2>
         <form action="editarHorario.php" method="POST">
             <input type="hidden" name="idHorario" value="<?= $row['idHorario']?>">
             <input type="text" name="NombreHorario" placeholder="Nombre del horario" value="<?= $row['NombreHorario']?>">

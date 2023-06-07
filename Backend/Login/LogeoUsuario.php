@@ -13,7 +13,7 @@ function __construct() {
 function Logear(){
 
     $email=$_POST['correoL'];
-    $contrasena =md5( $_POST['contraL']);
+    $contrasena =md5($_POST['contraL']);
 
     $Buscar_Usuario ="SELECT * FROM usuario WHERE correo='$email' AND Contrasena='$contrasena'";
     $Verificar_Usuario = mysqli_query($this->conexion->link,$Buscar_Usuario);
