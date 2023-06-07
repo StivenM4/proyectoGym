@@ -23,13 +23,13 @@ function __construct() {
 
         if($guardar_New_Usuario){
             
-            Header("Location: ../../../pagAdmo.php");            
+            Header("Location: ../../../pagAdministracion.php");            
         }
         else{
             echo'
             <script>
             alert("....Error...");
-            window.location = "../../../pagAdmo.php";
+            window.location = "../../../pagAdministracion.php";
             </script>
             ';
         }

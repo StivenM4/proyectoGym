@@ -1,5 +1,3 @@
-
-
 <?php
 
 include("Backend/Consultas.php"); 
@@ -34,8 +32,8 @@ include("Backend/Consultas.php");
     <link rel="stylesheet" href="Frontend/assets/css/pagAdmi.css">
     <header>
         <div class="navegacion">
-        <h2 class="logo">ProFit Gym Admo 2.0</h2>
-        <div class="caja"><a class="btnSalir" href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a></div>
+            <h2 class="logo">ProFit Gym Admo 2.0</h2>
+            <div class="caja"><a class="btnSalir" href="Backend/Login/CerrarSesion.php"> Cerrar Sesion</a></div>
         </div>
 
     </header>
@@ -56,9 +54,9 @@ include("Backend/Consultas.php");
                 <div class="caja"><button onclick="divVisibility('formRutina')">Rutina</button></div>
                 <div class="caja"><button onclick="divVisibility('formServicio')">Servicio</button></div>
                 <div class="caja"><button onclick="divVisibility('formTarjeta')">Tarjeta</button></div>
-                
-                
-                
+
+
+
             </div>
         </div>
         <div class="Amdo">
@@ -82,43 +80,43 @@ include("Backend/Consultas.php");
                     <input type="submit" value="Agregar">
                 </form>
 
-                    <h2>Usuarios registrados</h2>
-                    <table>
-                      
-                        <tbody>
-                        <tr class="InicioTabla" >
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Contra</th>
-                                <th>Editar</th>
-                           
-                            </tr>
+                <h2>Usuarios registrados</h2>
+                <table>
 
-                            <?php while ($row = mysqli_fetch_array($guardar_usuario) ): ?>
-                            <tr>
-                                <th>
-                                    <?= $row['idUsuario'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['NombreUsuario'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['Correo'] ?>
-                                </th>
-                                <th>
-                                    <?= $row['Contrasena'] ?>
-                                </th>
-                                <th><a href="Backend/Modelo-Controlador/Usuario/updateUsuario.php?idUsuario=<?= $row['idUsuario'] ?>"
-                                        class="userEditar">Editar</a>
+                    <tbody>
+                        <tr class="InicioTabla">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Contra</th>
+                            <th>Editar</th>
+
+                        </tr>
+
+                        <?php while ($row = mysqli_fetch_array($guardar_usuario) ): ?>
+                        <tr>
+                            <th>
+                                <?= $row['idUsuario'] ?>
+                            </th>
+                            <th>
+                                <?= $row['NombreUsuario'] ?>
+                            </th>
+                            <th>
+                                <?= $row['Correo'] ?>
+                            </th>
+                            <th>
+                                <?= $row['Contrasena'] ?>
+                            </th>
+                            <th><a href="Backend/Modelo-Controlador/Usuario/updateUsuario.php?idUsuario=<?= $row['idUsuario'] ?>"
+                                    class="userEditar">Editar</a>
                                 <a href="Backend/Modelo-Controlador/Usuario/borrarUsuario.php?idUsuario=<?= $row['idUsuario'] ?>"
-                                        class="UserBorrar">borrar</a>
-                                </th>
-                            </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
-                
+                                    class="UserBorrar">borrar</a>
+                            </th>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+
             </div>
 
             <div id="formActividades" class="contenedor">
@@ -131,14 +129,14 @@ include("Backend/Consultas.php");
 
                 <h2>Actividades registradas</h2>
                 <table>
-                   
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Acciones</th>
-                            
+
                         </tr>
                         <?php while ($row = mysqli_fetch_array($guardar_Actividades)): ?>
                         <tr>
@@ -187,9 +185,9 @@ include("Backend/Consultas.php");
 
                 <h2>Clases registradas</h2>
                 <table>
-                    
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Duración</th>
@@ -236,9 +234,9 @@ include("Backend/Consultas.php");
 
                 <h2>Ejercicios registrados</h2>
                 <table>
-                   
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -281,9 +279,9 @@ include("Backend/Consultas.php");
 
                 <h2>Entrenadores registrados</h2>
                 <table>
-                    
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>DNI</th>
                             <th>Nombre</th>
                             <th>Edad</th>
@@ -344,10 +342,10 @@ include("Backend/Consultas.php");
 
                 <h2>Grupos registrados</h2>
                 <table>
-                
-                    
+
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -410,9 +408,9 @@ include("Backend/Consultas.php");
 
                 <h2>Horarios registrados</h2>
                 <table>
-                    
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Tiempo</th>
@@ -458,10 +456,10 @@ include("Backend/Consultas.php");
 
                 <h2>Implementos registrados</h2>
                 <table>
-                    
-                    
+
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Tipo</th>
@@ -502,52 +500,52 @@ include("Backend/Consultas.php");
                 <h1>Realizar pago</h1>
                 <form action="Backend/Modelo-Controlador/Pago/agregarPago.php" method="POST">
 
-                        <select name="idUsuarioPago">
-                            <?php 
+                    <select name="idUsuarioPago">
+                        <?php 
                         
                         $guardar_UsuarioPago=mysqli_query($conexion->link,$verUsuario);
                         while ($row = mysqli_fetch_array($guardar_UsuarioPago)): ?>
 
-                            <option value="<?= $row['idUsuario'] ?>">
-                                <?= $row['NombreUsuario'] ?>    
+                        <option value="<?= $row['idUsuario'] ?>">
+                            <?= $row['NombreUsuario'] ?>
 
-                            </option>
+                        </option>
 
-                            <?php endwhile; ?>
-                        </select>
+                        <?php endwhile; ?>
+                    </select>
 
-                        
-                        <select name="idTarjetaPago">
-                            <?php 
+
+                    <select name="idTarjetaPago">
+                        <?php 
 
                             $guardar_TarjetaPago=mysqli_query($conexion->link, $verTarjeta);
                             while ($row = mysqli_fetch_array($guardar_TarjetaPago)): ?>
-                                <option value="<?= $row['idTarjeta'] ?>">
-                                    <?= $row['idTarjeta'] ?>
-                                </option>
-                            <?php endwhile; ?>
-                        </select>
+                        <option value="<?= $row['idTarjeta'] ?>">
+                            <?= $row['idTarjeta'] ?>
+                        </option>
+                        <?php endwhile; ?>
+                    </select>
 
-                        <select name="PlanPago">
+                    <select name="PlanPago">
                         <?php 
                         $guardar_PlanPago=mysqli_query($conexion->link, $verPlan);
                         while ($row = mysqli_fetch_array($guardar_PlanPago)): ?>
-                            <option value="<?= $row['idPlan'] ?>">
-                                <?= $row['NombrePlan'] ?>
-                            </option>
+                        <option value="<?= $row['idPlan'] ?>">
+                            <?= $row['NombrePlan'] ?>
+                        </option>
                         <?php endwhile; ?>
                     </select>
-    
 
-                        <input type="date" name="FechaPago" oninput="formatDate() placeholder="Fecha de Pago">
-                        <input type="submit" value="Realizar Pago">
+
+                    <input type="date" name="FechaPago" oninput="formatDate() placeholder=" Fecha de Pago">
+                    <input type="submit" value="Realizar Pago">
                 </form>
 
                 <h2>Pagos registrados</h2>
                 <table>
-                    
-                    <tbody >
-                    <tr class="InicioTabla" >
+
+                    <tbody>
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Tarjeta</th>
@@ -600,9 +598,9 @@ include("Backend/Consultas.php");
 
                 <h2>Planes registrados</h2>
                 <table>
-                    
+
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Duración</th>
@@ -637,33 +635,33 @@ include("Backend/Consultas.php");
             <div id="formRutina" class="contenedor">
                 <h1>Crear rutina</h1>
                 <form action="Backend/Modelo-Controlador/Rutina/agregarRutina.php" method="POST">
-                <select name="idUsuarioRutina">
-                            <?php 
+                    <select name="idUsuarioRutina">
+                        <?php 
                         
                         $guardar_UsuarioRutina=mysqli_query($conexion->link,$verUsuario);
                         while ($row = mysqli_fetch_array($guardar_UsuarioRutina)): ?>
 
-                            <option value="<?= $row['idUsuario'] ?>">
-                                <?= $row['NombreUsuario'] ?>    
+                        <option value="<?= $row['idUsuario'] ?>">
+                            <?= $row['NombreUsuario'] ?>
 
-                            </option>
+                        </option>
 
-                            <?php endwhile; ?>
-                        </select>
-                        <select name="idEntrenadorRutina">
-                            <?php 
+                        <?php endwhile; ?>
+                    </select>
+                    <select name="idEntrenadorRutina">
+                        <?php 
                         
                         $guardar_EntrenadorRutina=mysqli_query($conexion->link,$verEntrenador);
                         while ($row = mysqli_fetch_array($guardar_EntrenadorRutina)): ?>
 
-                            <option value="<?= $row['DniEntrenador'] ?>">
-                                <?= $row['NombreEntrenador'] ?>    
+                        <option value="<?= $row['DniEntrenador'] ?>">
+                            <?= $row['NombreEntrenador'] ?>
 
-                            </option>
+                        </option>
 
-                            <?php endwhile; ?>
-                        </select>
-                    
+                        <?php endwhile; ?>
+                    </select>
+
                     <input type="text" name="NombreRutina" placeholder="Nombre">
                     <input type="text" name="Observaciones" placeholder="Observaciones">
 
@@ -673,7 +671,7 @@ include("Backend/Consultas.php");
                 <h2>Rutinas registradas</h2>
                 <table>
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Entrenador</th>
@@ -723,7 +721,7 @@ include("Backend/Consultas.php");
                 <table>
 
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -766,7 +764,7 @@ include("Backend/Consultas.php");
                 <table>
 
                     <tbody>
-                    <tr class="InicioTabla" >
+                        <tr class="InicioTabla">
                             <th>ID</th>
                             <th>Número</th>
                             <th>Fecha de expiración</th>
